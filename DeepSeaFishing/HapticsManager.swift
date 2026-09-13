@@ -7,8 +7,11 @@ final class HapticsManager {
     private var engine: CHHapticEngine?
     private var tensionPlayer: CHHapticAdvancedPatternPlayer?
 
+    /// True only once the engine has actually started - hardware capability
+    /// alone (the old check here) says nothing about whether init's `try
+    /// engine.start()` below actually succeeded.
     var isAvailable: Bool {
-        CHHapticEngine.capabilitiesForHardware().supportsHaptics
+        engine != nil
     }
 
     init() {

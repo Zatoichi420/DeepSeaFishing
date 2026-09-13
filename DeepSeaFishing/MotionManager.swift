@@ -14,6 +14,11 @@ final class MotionManager {
 
     private let motionManager = CMMotionManager()
     private var baselinePitch: Double?
+    private var calibrationSamples: [Double] = []
+    // ~300ms at the 20Hz update interval below - long enough to average out one
+    // noisy sample (a finger still adjusting grip when the fight starts), short
+    // enough that the player doesn't notice a delay before tilt starts working.
+    private let calibrationSampleCount = 6
     private let tiltThreshold = 0.25 // radians, roughly 14 degrees
 
     var isAvailable: Bool {
@@ -22,8 +27,7 @@ final class MotionManager {
 
     func start() {
         guard motionManager.isDeviceMotionAvailable else { return }
-        baselinePitch = nil
-        tiltState = .neutral
+        beginCalibration()
         motionManager.deviceMotionUpdateInterval = 1.0 / 20.0
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] motion, _ in
             guard let self, let motion else { return }
@@ -33,15 +37,32 @@ final class MotionManager {
 
     func stop() {
         motionManager.stopDeviceMotionUpdates()
+        beginCalibration()
+    }
+
+    /// Re-zeroes against whatever angle the phone is being held at right now.
+    /// Exposed so a player can fix a fight where tilt feels backwards/dead -
+    /// the original single-sample calibration below had no such recovery path.
+    func recalibrate() {
+        beginCalibration()
+    }
+
+    private func beginCalibration() {
         baselinePitch = nil
+        calibrationSamples.removeAll()
         tiltState = .neutral
     }
 
     private func handle(_ motion: CMDeviceMotion) {
         let pitch = motion.attitude.pitch
+
         if baselinePitch == nil {
-            baselinePitch = pitch
+            calibrationSamples.append(pitch)
+            guard calibrationSamples.count >= calibrationSampleCount else { return }
+            baselinePitch = calibrationSamples.reduce(0, +) / Double(calibrationSamples.count)
+            calibrationSamples.removeAll()
         }
+
         let delta = pitch - (baselinePitch ?? pitch)
 
         if delta > tiltThreshold {

@@ -12,6 +12,7 @@ final class AudioManager {
 
     private let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
     private var isRunning = false
+    private var interruptionObserver: NSObjectProtocol?
 
     init() {
         engine.attach(ambiencePlayer)
@@ -22,6 +23,36 @@ final class AudioManager {
             engine.attach(voice)
             engine.connect(voice, to: engine.mainMixerNode, format: format)
             effectVoices.append(voice)
+        }
+
+        // Without this, a phone call/Siri/another app interrupting the session
+        // stops the engine out from under us, but `isRunning` never notices -
+        // every future play() call would silently no-op for the rest of the
+        // session, permanently and undiagnosably losing all game audio.
+        interruptionObserver = NotificationCenter.default.addObserver(
+            forName: AVAudioSession.interruptionNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self,
+                  let info = notification.userInfo,
+                  let typeValue = info[AVAudioSessionInterruptionTypeKey] as? UInt,
+                  let type = AVAudioSession.InterruptionType(rawValue: typeValue)
+            else { return }
+            switch type {
+            case .began:
+                self.isRunning = false
+            case .ended:
+                self.start()
+            @unknown default:
+                break
+            }
+        }
+    }
+
+    deinit {
+        if let interruptionObserver {
+            NotificationCenter.default.removeObserver(interruptionObserver)
         }
     }
 

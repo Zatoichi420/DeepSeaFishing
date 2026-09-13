@@ -122,6 +122,14 @@ final class GameViewModel {
     /// Whether tilt controls are usable on this device (always false in Simulator).
     var isMotionAvailable: Bool { motion.isAvailable }
 
+    /// Re-zeroes tilt against the phone's current angle - the fallback for a
+    /// fight where tilt feels backwards or stuck, since calibration only
+    /// happens once automatically, at fight start.
+    func recalibrateTilt() {
+        motion.recalibrate()
+        announce("Tilt recalibrated.")
+    }
+
     func cast() {
         guard case .selectingGear(let species) = phase else { return }
         currentFish = Fish.random(species: species)

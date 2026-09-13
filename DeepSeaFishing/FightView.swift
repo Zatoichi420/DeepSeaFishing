@@ -33,6 +33,16 @@ struct FightView: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
+
+                // Tilt calibrates once, automatically, when the fight starts -
+                // this is the recovery path if it ends up feeling backwards or
+                // stuck, without needing to quit and restart the fight.
+                Button("Recalibrate Tilt") {
+                    viewModel.recalibrateTilt()
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                .accessibilityHint("Re-zeroes tilt to however you're currently holding the phone.")
             }
 
             MeterView(title: "Line to shore", value: viewModel.progress, tint: .green)
