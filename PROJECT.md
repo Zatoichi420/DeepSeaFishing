@@ -122,6 +122,47 @@ Ideas worth drawing on (concepts only, not code):
   running-process check). **Sound quality/balance is completely unverified by
   ear** — Claude has no way to hear the output, only to confirm it doesn't crash.
   Needs real listening feedback next time Orlando is at the phone.
+- 2026-08-20: **Accessibility audit + fixes** (3 parallel agents covering UI
+  code, sensory/gameplay mechanics, and design-intent-vs-code gaps), after
+  Orlando confirmed tilt control and haptics both genuinely work on-device —
+  this closed out the top open item from 2026-08-13. Fixes: focus management
+  added to every screen transition (`@AccessibilityFocusState`, matching the
+  pattern `OnboardingView` already had); a real unfair-timing bug fixed in
+  `GameViewModel.tick()` where a fish's run could spike tension to the snap
+  threshold in the same tick its haptic/audio cue started (0ms reaction time);
+  a new sonar-style audio "progress pulse" (`AudioManager.playProgressPulse`)
+  giving a blind player a real-time channel for line-to-shore progress, not
+  just tension; a magic-tap (`GameViewModel.announceCurrentState`) to recover
+  missed/talked-over state on demand; the gear-mismatch warning and new
+  personal-best catches now get proper announcements; `playLanded()` and
+  swordfish's run haptics were differentiated (they read as near-identical
+  before); mid-run state (casts remaining, best catch so far) now persists
+  across an app kill via `UserDefaults`. Built, installed, and launched clean
+  on-device — this was never recorded in this file before today, only in
+  chat/session memory, which is why this entry is dated after the fact.
+- 2026-09-13: **Project became a real git repo and pushed to GitHub**
+  (`github.com/Zatoichi420/DeepSeaFishing`, public), after 23+ days untouched.
+  Two Explore agents reviewed the project fresh: one confirmed all 7 fixes from
+  the 2026-08-20 audit above are genuinely present in the code (not just
+  claimed), then surveyed for new accessibility gaps; the other did this
+  project's first-ever correctness/code-quality pass (no automated test suite
+  exists here, unlike the sister Dungeon Speaker project). Three real
+  silent-failure bugs fixed: `MotionManager`'s tilt calibration locked onto a
+  single, possibly-noisy sample with no recalibration path (now averages ~6
+  samples, plus a new "Recalibrate Tilt" button in `FightView` for mid-fight
+  drift); `AudioManager` had no `AVAudioSession.interruptionNotification`
+  handling at all, so a phone call could silently and permanently kill all
+  game audio for the rest of the session (now recovers on `.ended`);
+  `HapticsManager.isAvailable` only checked hardware capability, not whether
+  the engine actually started, so it could report "available" after a silent
+  failure. Four new accessibility gaps also closed: the gear-mismatch warning
+  now gets announced when it changes; `IdleView` (the only screen missing it)
+  now gets focus management on entry; `MeterView`'s duplicate title read
+  ("Line to shore" then "Line to shore, 45 percent") is fixed; the onboarding
+  Skip button's touch target was likely under 44pt and now isn't. **Still
+  needs Orlando's own hands**: the tilt-recalibration and audio-interruption-
+  recovery fixes specifically, since they can only really be confirmed by
+  feel/ear on a real device, not by a clean build.
 
 ### Motion + haptics (added 2026-08-12)
 
@@ -269,16 +310,13 @@ the build.
 - SwiftUI vs UIKit for VoiceOver control precision — current build is SwiftUI;
   revisit only if VoiceOver focus during the fight loop turns out to need finer
   control than standard button/ProgressView accessibility gives us.
-- Motion + haptics + audio are all implemented but **still unverified by
-  feel/ear** — the app was installed and launched on the physical iPhone on
-  2026-08-13, but Orlando hadn't reported back on tilt direction/haptic feel
-  before the session moved on to visuals and then audio, and the latest build
-  (images + sound) hasn't reached the phone yet. **This is the top priority for
-  the next session on the Mac**: reinstall the current build and confirm
-  (a) tilt-back-to-reel feels correct, not backwards, (b) the haptic patterns
-  feel distinct and readable, and (c) the ocean ambience volume and one-shot
-  sound effects feel right, not too loud/soft/harsh, and don't fight VoiceOver
-  speech for attention.
+- **Resolved 2026-08-20**: tilt direction and haptic feel were confirmed
+  correct on-device by Orlando. **Still open**: the ocean ambience volume and
+  one-shot sound effect balance have never been confirmed by ear at all, and
+  two brand-new 2026-09-13 fixes specifically need a real-device check —
+  whether "Recalibrate Tilt" (`FightView`) actually fixes a fight where tilt
+  feels backwards/stuck, and whether game audio genuinely recovers after a
+  real interruption (a phone call or Siri) instead of staying silent.
 - Possible future addition: a "shake to set the hook" moment right after casting
   (matches the original inspiration's cast → wait → shake idea) — deliberately left
   out of the current motion pass to keep scope to reel/ease control.
