@@ -96,6 +96,16 @@ struct GearSelectionView: View {
             }
             .padding(.bottom)
         }
+        // The "Wrong gear" text above appears/disappears as kit buttons are
+        // tapped, but nothing told VoiceOver it changed - a blind player only
+        // found out by happening to swipe back over that spot afterward.
+        .onChange(of: viewModel.selectedKit) { _, _ in
+            if !viewModel.isGearMatched {
+                AccessibilityNotification.Announcement(
+                    AttributedString("Wrong gear for this fish - the fight will be tougher.")
+                ).post()
+            }
+        }
         .onAppear {
             isTitleFocused = true
         }

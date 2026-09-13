@@ -81,8 +81,12 @@ struct MeterView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
+            // The ProgressView below already carries this same title as part
+            // of its own accessibilityLabel - without this, VoiceOver reads
+            // "Line to shore" then "Line to shore, 45 percent" back to back.
             Text(title)
                 .font(.subheadline)
+                .accessibilityHidden(true)
             ProgressView(value: value)
                 .tint(tint)
                 .accessibilityLabel(title)

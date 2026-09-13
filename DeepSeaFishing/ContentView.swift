@@ -30,6 +30,8 @@ struct ContentView: View {
 struct IdleView: View {
     var viewModel: GameViewModel
 
+    @AccessibilityFocusState private var isTitleFocused: Bool
+
     var body: some View {
         VStack(spacing: 20) {
             Image("OceanWaveImage")
@@ -43,6 +45,7 @@ struct IdleView: View {
             Text("Deep Sea Fishing")
                 .font(.largeTitle)
                 .bold()
+                .accessibilityFocused($isTitleFocused)
 
             Text("\(viewModel.castsRemaining) cast\(viewModel.castsRemaining == 1 ? "" : "s") left this run")
                 .font(.headline)
@@ -66,6 +69,9 @@ struct IdleView: View {
                 viewModel.showOnboarding()
             }
             .buttonStyle(.bordered)
+        }
+        .onAppear {
+            isTitleFocused = true
         }
     }
 }
