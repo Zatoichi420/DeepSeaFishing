@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88542167A15AD68A28F647D6 /* GameViewModel.swift */; };
+		12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */; };
+		23DCA316255851577E52413F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26008E65A2704C216128EE1F /* OnboardingView.swift */; };
+		35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
+		3E2A1F37176724B1EE0A48FB /* ResultViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F961945ABFA3A257FC0AD /* ResultViews.swift */; };
+		3F503C46970E1F009F8F6416 /* FightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70F7E68FAD9E2074A6D20 /* FightView.swift */; };
+		580883C602E66816AE711B7C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */; };
+		5BDD8CF2C76DBE8C3D5625D5 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
+		742160E51231E955DE2818AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF1DB6943235ECD7717B465 /* Assets.xcassets */; };
+		A6619B8DC7CE3AA4F5806550 /* EquipmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */; };
+		AA541DF657C749281C62464F /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94BD649023411565A17D774 /* GameModels.swift */; };
+		BCC276EA34D100485ADECB36 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D20AA02BC231BA5466CBB /* MotionManager.swift */; };
+		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
+		FBE559836154C2A02717E83D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E810E0DB291C3876062ED7B /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0CF1DB6943235ECD7717B465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		26008E65A2704C216128EE1F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4803096F259D6E037287426C /* SelectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViews.swift; sourceTree = "<group>"; };
+		4908810A29A9E1C24F464330 /* DeepSeaFishing.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DeepSeaFishing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeaFishingApp.swift; sourceTree = "<group>"; };
+		5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModels.swift; sourceTree = "<group>"; };
+		88542167A15AD68A28F647D6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		8E810E0DB291C3876062ED7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A4A70F7E68FAD9E2074A6D20 /* FightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightView.swift; sourceTree = "<group>"; };
+		A94BD649023411565A17D774 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
+		AD2D20AA02BC231BA5466CBB /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		D4A5DEB63508C204E6EC834E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E18F961945ABFA3A257FC0AD /* ResultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViews.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		159CFE0C2D8A1988D999CFCD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */,
+			);
+			name = "Preview Content";
+			path = "DeepSeaFishing/Preview Content";
+			sourceTree = "<group>";
+		};
+		1C8E59F36E3DC542D41D6839 = {
+			isa = PBXGroup;
+			children = (
+				76CA4FED000A0E53E916DE7B /* DeepSeaFishing */,
+				159CFE0C2D8A1988D999CFCD /* Preview Content */,
+				616A2AAC6F1FE429FC198D07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		616A2AAC6F1FE429FC198D07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4908810A29A9E1C24F464330 /* DeepSeaFishing.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76CA4FED000A0E53E916DE7B /* DeepSeaFishing */ = {
+			isa = PBXGroup;
+			children = (
+				0CF1DB6943235ECD7717B465 /* Assets.xcassets */,
+				BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */,
+				8E810E0DB291C3876062ED7B /* ContentView.swift */,
+				5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */,
+				7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */,
+				A4A70F7E68FAD9E2074A6D20 /* FightView.swift */,
+				A94BD649023411565A17D774 /* GameModels.swift */,
+				88542167A15AD68A28F647D6 /* GameViewModel.swift */,
+				5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */,
+				D4A5DEB63508C204E6EC834E /* Info.plist */,
+				AD2D20AA02BC231BA5466CBB /* MotionManager.swift */,
+				26008E65A2704C216128EE1F /* OnboardingView.swift */,
+				E18F961945ABFA3A257FC0AD /* ResultViews.swift */,
+				4803096F259D6E037287426C /* SelectionViews.swift */,
+			);
+			path = DeepSeaFishing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4A5F5DA8043DC69B5837E97 /* DeepSeaFishing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 489D0DB69FD6A64CE94133B1 /* Build configuration list for PBXNativeTarget "DeepSeaFishing" */;
+			buildPhases = (
+				C911898C3947C6AE6494FE4A /* Sources */,
+				6213C48302FC98CDFB3C2E5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeepSeaFishing;
+			packageProductDependencies = (
+			);
+			productName = DeepSeaFishing;
+			productReference = 4908810A29A9E1C24F464330 /* DeepSeaFishing.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAB6D2416876685402F59D72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					D4A5F5DA8043DC69B5837E97 = {
+						DevelopmentTeam = N724Z4725Y;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 49A08654E8DE9824A2EA794F /* Build configuration list for PBXProject "DeepSeaFishing" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1C8E59F36E3DC542D41D6839;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 616A2AAC6F1FE429FC198D07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4A5F5DA8043DC69B5837E97 /* DeepSeaFishing */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6213C48302FC98CDFB3C2E5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				742160E51231E955DE2818AE /* Assets.xcassets in Resources */,
+				12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C911898C3947C6AE6494FE4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580883C602E66816AE711B7C /* AudioManager.swift in Sources */,
+				FBE559836154C2A02717E83D /* ContentView.swift in Sources */,
+				5BDD8CF2C76DBE8C3D5625D5 /* DeepSeaFishingApp.swift in Sources */,
+				A6619B8DC7CE3AA4F5806550 /* EquipmentModels.swift in Sources */,
+				3F503C46970E1F009F8F6416 /* FightView.swift in Sources */,
+				AA541DF657C749281C62464F /* GameModels.swift in Sources */,
+				042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */,
+				35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */,
+				BCC276EA34D100485ADECB36 /* MotionManager.swift in Sources */,
+				23DCA316255851577E52413F /* OnboardingView.swift in Sources */,
+				3E2A1F37176724B1EE0A48FB /* ResultViews.swift in Sources */,
+				CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2CB1A5B2050AFD7C2B0CD3C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		9B247531D2F78562E19D55BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		E1858D37425B871C4DAF2B12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N724Z4725Y;
+				INFOPLIST_FILE = DeepSeaFishing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.orlandojohnson.DeepSeaFishing;
+				PRODUCT_NAME = DeepSeaFishing;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F6B1ABDD8E813542BAB1935A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N724Z4725Y;
+				INFOPLIST_FILE = DeepSeaFishing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.orlandojohnson.DeepSeaFishing;
+				PRODUCT_NAME = DeepSeaFishing;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		489D0DB69FD6A64CE94133B1 /* Build configuration list for PBXNativeTarget "DeepSeaFishing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B1ABDD8E813542BAB1935A /* Debug */,
+				E1858D37425B871C4DAF2B12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		49A08654E8DE9824A2EA794F /* Build configuration list for PBXProject "DeepSeaFishing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B247531D2F78562E19D55BA /* Debug */,
+				2CB1A5B2050AFD7C2B0CD3C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BAB6D2416876685402F59D72 /* Project object */;
+}
