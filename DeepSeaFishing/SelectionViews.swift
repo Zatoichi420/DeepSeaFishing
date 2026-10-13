@@ -12,7 +12,7 @@ struct SpeciesSelectionView: View {
                 .bold()
                 .accessibilityFocused($isTitleFocused)
 
-            ForEach(FishSpecies.allCases, id: \.self) { species in
+            ForEach(viewModel.targetableSpecies, id: \.self) { species in
                 Button {
                     viewModel.selectSpecies(species)
                 } label: {
@@ -30,6 +30,11 @@ struct SpeciesSelectionView: View {
                             Text(species.blurb)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
+                            if let legend = legendHere(species) {
+                                Text("\(legend.name.capitalizedFirst) hunts these waters.")
+                                    .font(.subheadline)
+                                    .bold()
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -39,10 +44,21 @@ struct SpeciesSelectionView: View {
                 .buttonStyle(.plain)
                 .accessibilityElement(children: .combine)
             }
+
+            Button("Back") {
+                viewModel.cancelTargeting()
+            }
+            .buttonStyle(.bordered)
+            .frame(minHeight: 44)
         }
         .onAppear {
             isTitleFocused = true
         }
+    }
+
+    private func legendHere(_ species: FishSpecies) -> Legend? {
+        guard viewModel.mode == .career, let career = viewModel.career, let ground = career.trip?.ground else { return nil }
+        return career.legendInPlay(ground: ground, species: species)
     }
 }
 
@@ -68,17 +84,24 @@ struct GearSelectionView: View {
                     .bold()
                     .accessibilityFocused($isTitleFocused)
 
-                ForEach(EquipmentKit.allCases, id: \.self) { kit in
+                ForEach(viewModel.availableKits, id: \.self) { kit in
                     Button {
                         viewModel.selectKit(kit)
                     } label: {
                         KitCard(
                             kit: kit,
                             isSelected: viewModel.selectedKit == kit,
-                            isRecommended: kit == species.recommendedKit
+                            isRecommended: kit == species.recommendedKit,
+                            tier: viewModel.mode == .career ? viewModel.career?.tier(of: kit) : nil
                         )
                     }
                     .buttonStyle(.plain)
+                }
+
+                if viewModel.mode == .career, let career = viewModel.career, career.liveBait > 0 {
+                    @Bindable var model = viewModel
+                    Toggle("Use live bait, \(career.liveBait) left", isOn: $model.useLiveBait)
+                        .accessibilityHint(Bait.liveBait.summary)
                 }
 
                 if !viewModel.isGearMatched {
@@ -93,6 +116,12 @@ struct GearSelectionView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .accessibilityHint("Casts your line using the selected gear.")
+
+                Button("Back") {
+                    viewModel.beginTargeting()
+                }
+                .buttonStyle(.bordered)
+                .accessibilityHint("Choose a different fish.")
             }
             .padding(.bottom)
         }
@@ -116,11 +145,12 @@ private struct KitCard: View {
     let kit: EquipmentKit
     let isSelected: Bool
     let isRecommended: Bool
+    var tier: TackleTier? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text(kit.displayName)
+                Text(tier.map { "\(kit.displayName), \($0.displayName) grade" } ?? kit.displayName)
                     .font(.headline)
                 if isRecommended {
                     Text("Recommended")

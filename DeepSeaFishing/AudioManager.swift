@@ -76,12 +76,14 @@ final class AudioManager {
     func playEase() { play(Self.makeEaseBuffer(format: format)) }
     func playLanded() { play(Self.makeLandedBuffer(format: format)) }
     func playSnap() { play(Self.makeSnapBuffer(format: format)) }
+    /// A short click for money changing hands at the dock or the shop.
+    func playCash() { play(Self.makeClickBuffer(format: format)) }
 
     func playRun(for species: FishSpecies) {
-        switch species {
-        case .marlin: play(Self.makeMarlinRunBuffer(format: format))
-        case .swordfish: play(Self.makeSwordfishRunBuffer(format: format))
-        case .tuna: play(Self.makeTunaRunBuffer(format: format))
+        switch species.fightStyle {
+        case .burst: play(Self.makeMarlinRunBuffer(format: format))
+        case .deep: play(Self.makeSwordfishRunBuffer(format: format))
+        case .steady: play(Self.makeTunaRunBuffer(format: format))
         }
     }
 

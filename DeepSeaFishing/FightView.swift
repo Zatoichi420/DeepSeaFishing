@@ -16,7 +16,7 @@ struct FightView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .accessibilityHidden(true)
 
-                Text("Fighting a \(fish.species.displayName)")
+                Text(fish.legendName.map { "Fighting \($0)" } ?? "Fighting a \(fish.species.displayName)")
                     .font(.title2)
                     .bold()
                     .accessibilityFocused($isTitleFocused)

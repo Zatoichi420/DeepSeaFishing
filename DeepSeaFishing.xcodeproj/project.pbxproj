@@ -10,36 +10,59 @@
 		042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88542167A15AD68A28F647D6 /* GameViewModel.swift */; };
 		12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */; };
 		23DCA316255851577E52413F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26008E65A2704C216128EE1F /* OnboardingView.swift */; };
+		297D8A59F6F9268C33D9D08E /* CareerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D14F500384CB874310746 /* CareerViews.swift */; };
+		3562B35EEA56658126BF4F20 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A47C79615D317A5D47D5DE /* Simulation.swift */; };
 		35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
 		3E2A1F37176724B1EE0A48FB /* ResultViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F961945ABFA3A257FC0AD /* ResultViews.swift */; };
 		3F503C46970E1F009F8F6416 /* FightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70F7E68FAD9E2074A6D20 /* FightView.swift */; };
+		4D950BC96C6388333615F06A /* FightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0345F71EBF759999A583AB6 /* FightEngine.swift */; };
 		580883C602E66816AE711B7C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */; };
 		5BDD8CF2C76DBE8C3D5625D5 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
 		742160E51231E955DE2818AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF1DB6943235ECD7717B465 /* Assets.xcassets */; };
+		7914300116AF8E35B7BED661 /* CareerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF488FD3F9B15807228B19 /* CareerTests.swift */; };
 		A6619B8DC7CE3AA4F5806550 /* EquipmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */; };
 		AA541DF657C749281C62464F /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94BD649023411565A17D774 /* GameModels.swift */; };
+		BB30C23A795DFD01F582BEAE /* Career.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B14606CE77139EA82A56F3 /* Career.swift */; };
 		BCC276EA34D100485ADECB36 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D20AA02BC231BA5466CBB /* MotionManager.swift */; };
+		BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E679D6FD57403A3A76776061 /* SeededGenerator.swift */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		FBE559836154C2A02717E83D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E810E0DB291C3876062ED7B /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3F828DB5BDF141FC92B3A465 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BAB6D2416876685402F59D72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4A5F5DA8043DC69B5837E97;
+			remoteInfo = DeepSeaFishing;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0CF1DB6943235ECD7717B465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		240D14F500384CB874310746 /* CareerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViews.swift; sourceTree = "<group>"; };
 		26008E65A2704C216128EE1F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		37B14606CE77139EA82A56F3 /* Career.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Career.swift; sourceTree = "<group>"; };
 		47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4803096F259D6E037287426C /* SelectionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViews.swift; sourceTree = "<group>"; };
+		48A47C79615D317A5D47D5DE /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
 		4908810A29A9E1C24F464330 /* DeepSeaFishing.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DeepSeaFishing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeaFishingApp.swift; sourceTree = "<group>"; };
 		5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModels.swift; sourceTree = "<group>"; };
 		88542167A15AD68A28F647D6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		8E810E0DB291C3876062ED7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9FCF488FD3F9B15807228B19 /* CareerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerTests.swift; sourceTree = "<group>"; };
 		A4A70F7E68FAD9E2074A6D20 /* FightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightView.swift; sourceTree = "<group>"; };
 		A94BD649023411565A17D774 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
 		AD2D20AA02BC231BA5466CBB /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		AD2EBEB7BB6BA92EB7C8E322 /* DeepSeaFishingTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DeepSeaFishingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		D4A5DEB63508C204E6EC834E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E18F961945ABFA3A257FC0AD /* ResultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViews.swift; sourceTree = "<group>"; };
+		E679D6FD57403A3A76776061 /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
+		F0345F71EBF759999A583AB6 /* FightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -56,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				76CA4FED000A0E53E916DE7B /* DeepSeaFishing */,
+				6B98206B324689B97BD32E0A /* DeepSeaFishingTests */,
 				159CFE0C2D8A1988D999CFCD /* Preview Content */,
 				616A2AAC6F1FE429FC198D07 /* Products */,
 			);
@@ -65,8 +89,19 @@
 			isa = PBXGroup;
 			children = (
 				4908810A29A9E1C24F464330 /* DeepSeaFishing.app */,
+				AD2EBEB7BB6BA92EB7C8E322 /* DeepSeaFishingTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6B98206B324689B97BD32E0A /* DeepSeaFishingTests */ = {
+			isa = PBXGroup;
+			children = (
+				9FCF488FD3F9B15807228B19 /* CareerTests.swift */,
+				E679D6FD57403A3A76776061 /* SeededGenerator.swift */,
+				48A47C79615D317A5D47D5DE /* Simulation.swift */,
+			);
+			path = DeepSeaFishingTests;
 			sourceTree = "<group>";
 		};
 		76CA4FED000A0E53E916DE7B /* DeepSeaFishing */ = {
@@ -74,9 +109,12 @@
 			children = (
 				0CF1DB6943235ECD7717B465 /* Assets.xcassets */,
 				BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */,
+				37B14606CE77139EA82A56F3 /* Career.swift */,
+				240D14F500384CB874310746 /* CareerViews.swift */,
 				8E810E0DB291C3876062ED7B /* ContentView.swift */,
 				5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */,
 				7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */,
+				F0345F71EBF759999A583AB6 /* FightEngine.swift */,
 				A4A70F7E68FAD9E2074A6D20 /* FightView.swift */,
 				A94BD649023411565A17D774 /* GameModels.swift */,
 				88542167A15AD68A28F647D6 /* GameViewModel.swift */,
@@ -93,6 +131,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		51A5330DE0014CB6BE5C5401 /* DeepSeaFishingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6CBA0EFE2CF7A1E5266742C /* Build configuration list for PBXNativeTarget "DeepSeaFishingTests" */;
+			buildPhases = (
+				D8D67EF92A4BA1B44C2A2825 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5EC7994AB316F3D758B477F5 /* PBXTargetDependency */,
+			);
+			name = DeepSeaFishingTests;
+			packageProductDependencies = (
+			);
+			productName = DeepSeaFishingTests;
+			productReference = AD2EBEB7BB6BA92EB7C8E322 /* DeepSeaFishingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D4A5F5DA8043DC69B5837E97 /* DeepSeaFishing */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 489D0DB69FD6A64CE94133B1 /* Build configuration list for PBXNativeTarget "DeepSeaFishing" */;
@@ -120,6 +176,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					51A5330DE0014CB6BE5C5401 = {
+						DevelopmentTeam = N724Z4725Y;
+						ProvisioningStyle = Automatic;
+					};
 					D4A5F5DA8043DC69B5837E97 = {
 						DevelopmentTeam = N724Z4725Y;
 						ProvisioningStyle = Automatic;
@@ -141,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				D4A5F5DA8043DC69B5837E97 /* DeepSeaFishing */,
+				51A5330DE0014CB6BE5C5401 /* DeepSeaFishingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -163,9 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				580883C602E66816AE711B7C /* AudioManager.swift in Sources */,
+				BB30C23A795DFD01F582BEAE /* Career.swift in Sources */,
+				297D8A59F6F9268C33D9D08E /* CareerViews.swift in Sources */,
 				FBE559836154C2A02717E83D /* ContentView.swift in Sources */,
 				5BDD8CF2C76DBE8C3D5625D5 /* DeepSeaFishingApp.swift in Sources */,
 				A6619B8DC7CE3AA4F5806550 /* EquipmentModels.swift in Sources */,
+				4D950BC96C6388333615F06A /* FightEngine.swift in Sources */,
 				3F503C46970E1F009F8F6416 /* FightView.swift in Sources */,
 				AA541DF657C749281C62464F /* GameModels.swift in Sources */,
 				042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */,
@@ -177,7 +241,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8D67EF92A4BA1B44C2A2825 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7914300116AF8E35B7BED661 /* CareerTests.swift in Sources */,
+				BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */,
+				3562B35EEA56658126BF4F20 /* Simulation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5EC7994AB316F3D758B477F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4A5F5DA8043DC69B5837E97 /* DeepSeaFishing */;
+			targetProxy = 3F828DB5BDF141FC92B3A465 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2CB1A5B2050AFD7C2B0CD3C4 /* Release */ = {
@@ -234,6 +316,26 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		38E5F904D12B2A572B804C13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N724Z4725Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.orlandojohnson.DeepSeaFishingTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepSeaFishing.app/DeepSeaFishing";
 			};
 			name = Release;
 		};
@@ -301,6 +403,26 @@
 			};
 			name = Debug;
 		};
+		DC982379C69A225647F99C17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N724Z4725Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.orlandojohnson.DeepSeaFishingTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepSeaFishing.app/DeepSeaFishing";
+			};
+			name = Debug;
+		};
 		E1858D37425B871C4DAF2B12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -360,6 +482,15 @@
 			buildConfigurations = (
 				9B247531D2F78562E19D55BA /* Debug */,
 				2CB1A5B2050AFD7C2B0CD3C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C6CBA0EFE2CF7A1E5266742C /* Build configuration list for PBXNativeTarget "DeepSeaFishingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC982379C69A225647F99C17 /* Debug */,
+				38E5F904D12B2A572B804C13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

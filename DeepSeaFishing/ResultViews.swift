@@ -22,19 +22,26 @@ struct ResultView: View {
                         .font(.largeTitle)
                         .bold()
                         .accessibilityFocused($isTitleFocused)
-                    Text("\(fish.weightDescription) \(fish.species.displayName)")
+                    Text("\(fish.weightDescription) \(fish.legendName ?? fish.species.displayName)")
                         .font(.title2)
                 } else {
                     Text("It got away")
                         .font(.largeTitle)
                         .bold()
                         .accessibilityFocused($isTitleFocused)
-                    Text("The line snapped fighting that \(fish.species.displayName).")
+                    Text("The line snapped fighting \(fish.legendName ?? "that \(fish.species.displayName)").")
                         .multilineTextAlignment(.center)
                 }
             }
 
-            Button(viewModel.castsRemaining == 0 ? "See Run Results" : "Continue") {
+            if viewModel.mode == .career {
+                ForEach(viewModel.lastCatchReport.lines.indices, id: \.self) { i in
+                    Text(viewModel.lastCatchReport.lines[i])
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+
+            Button(continueTitle) {
                 viewModel.acknowledgeResult()
             }
             .buttonStyle(.borderedProminent)
@@ -42,6 +49,15 @@ struct ResultView: View {
         .onAppear {
             isTitleFocused = true
         }
+    }
+}
+
+extension ResultView {
+    fileprivate var continueTitle: String {
+        if viewModel.mode == .career {
+            return (viewModel.career?.trip?.castsLeft ?? 0) == 0 ? "Head Back to Port" : "Continue"
+        }
+        return viewModel.castsRemaining == 0 ? "See Run Results" : "Continue"
     }
 }
 
@@ -70,6 +86,12 @@ struct RunOverView: View {
                 viewModel.startRun()
             }
             .buttonStyle(.borderedProminent)
+
+            Button("Main Menu") {
+                viewModel.startRun()
+                viewModel.goHome()
+            }
+            .buttonStyle(.bordered)
         }
         .onAppear {
             isTitleFocused = true

@@ -8,11 +8,11 @@ private struct OnboardingStep {
 private let onboardingSteps: [OnboardingStep] = [
     OnboardingStep(
         title: "Welcome to Deep Sea Fishing",
-        body: "You're competing to land the single biggest fish you can. Each run gives you a handful of casts — make them count."
+        body: "Two ways to play. Career: inherit your grandfather's boat, the Marisol, earn your way out to deep water, and chase the legendary marlin he never landed. Quick Run: four casts to land the biggest fish you can."
     ),
     OnboardingStep(
         title: "Pick Your Target",
-        body: "Before every cast, choose which fish you're after: Tuna, Marlin, or Swordfish. Each one fights differently — marlin makes explosive runs, swordfish dives deep and holds steady tension, tuna just pulls hard and doesn't let up."
+        body: "Before every cast, choose which fish you're after. Each one fights differently — marlin, sailfish, mahi, and makos make explosive jumping runs, swordfish dive deep, and tuna and wahoo just pull hard and don't let up. You can feel and hear the difference."
     ),
     OnboardingStep(
         title: "Gear Up",
@@ -27,8 +27,8 @@ private let onboardingSteps: [OnboardingStep] = [
         body: "Tilt your phone back to reel in and forward to ease the line — the on-screen buttons do the same thing, so use whichever feels natural. You'll feel a haptic hum that rises with tension, distinct bursts when a fish makes a run, and a snap or a triumphant tap when the fight ends."
     ),
     OnboardingStep(
-        title: "Chase the Record",
-        body: "Land a fish and its weight becomes your best catch for the run. Your all-time biggest catch is saved on this device — beat it next time out."
+        title: "Build Your Career",
+        body: "In Career mode, you sell your catch at the dock, fill contracts for bonus pay, and spend your money on better tackle, live bait, and upgrades for the Marisol. Every fish earns experience; every level gives you a skill point. Your career saves itself. Your all-time biggest catch is saved too — beat it next time out."
     )
 ]
 

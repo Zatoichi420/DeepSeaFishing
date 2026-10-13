@@ -324,3 +324,35 @@ the build.
   species) — needs actual playtesting on-device to tune.
 - Should mismatched-gear runs still count toward the all-time best catch, or should
   the record only track "legit" (correct-gear) catches?
+
+## Career mode, tackle trees, leveling (2026-10-12)
+
+Orlando asked for the same treatment Dungeon Speaker got: a story, deeper items and inventory, and leveling.
+
+**Career mode** (new; the original 4-cast game is still here as **Quick Run**, with identical fight numbers):
+- **Story:** you inherit your grandfather Elias's sportfisher, the Marisol, in Port Salvage. There are 5 chapters and an epilogue (`StoryBeats` in `Career.swift`):
+  1. Earn $1,200 to repair the boat.
+  2. Land Old Scarback, a 980 lb bluefin at the Canyon Edge.
+  3. Win the Harbor Tournament by landing a blue marlin over 520 lb in the Gulf Stream, beating rival captain Dax Ferro.
+  4. Land the Gray Ghost, a swordfish in the Deep Trench.
+  5. Land Ironjaw, the 1,420 lb marlin carrying Elias's 1979 hook. You release him.
+- **Fishing grounds:** 4 grounds, unlocked by the story, with fuel costs and their own species pools.
+- **Species:** 5 new ones (mahi-mahi, wahoo, yellowfin, sailfish, mako), 8 total. Run haptics and sounds are keyed by fight style (burst, deep, steady), so every species reads by feel.
+- **Tackle:** 4 outfits; light tackle is new. Each upgrades Stock, Pro, Tournament, Custom Grander for faster reeling, less tension, and softer runs. Live bait packs. Four boat upgrades: fuel tank (+1 cast), fish finder (bigger fish), outriggers (legends bite more), fighting chair (less tension).
+- **Money:** fish sell by the pound at the dock. Billfish are tagged and released for a fee. Three rotating charter contracts pay bonuses. Legends carry bounties.
+- **Leveling:** angler experience to level 10, with a skill point per level. Five skills of 5 ranks each: Strength, Finesse, Instinct, Fish Sense, Salesmanship.
+- **Logbook** of every species and legend.
+- **Saving:** the career autosaves as JSON in Application Support (`CareerStore`).
+
+**Architecture:**
+- The fight is now a pure `FightEngine` struct, driven by the view model's timer.
+- `Career` is pure and `Codable`.
+- `GameRandom` is seedable.
+- There's a new `DeepSeaFishingTests` target: 17 tests, all passing.
+- A human-like fight bot reads tension with noise and sometimes over-reels. Results:
+  - Ordinary fish on the right gear: 91–99% landed.
+  - Wrong gear is clearly worse.
+  - Legends need upgraded tackle. Ironjaw is under 15% on stock gear and over 85% on tournament gear.
+- Simulated careers finish in 9–18 trips (median 12).
+
+**Not verified:** none of it has been played on the phone. New species reuse the nearest relative's image (mahi and mako show the ocean photo) until real public-domain art is sourced.

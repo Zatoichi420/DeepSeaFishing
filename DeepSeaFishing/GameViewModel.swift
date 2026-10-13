@@ -1,41 +1,68 @@
 import SwiftUI
 import Observation
 
+enum GameMode: Equatable {
+    case quickRun
+    case career
+}
+
 enum GamePhase: Equatable {
     case onboarding
+    case home
+    // Quick Run
     case idle
+    case runOver
+    // Career
+    case story
+    case dock
+    case groundSelect
+    case shop
+    case skills
+    case logbook
+    case atSea
+    case tripSummary
+    // Shared
     case selectingSpecies
     case selectingGear(FishSpecies)
     case fighting
     case result(landed: Bool)
-    case runOver
 }
 
 @Observable
 final class GameViewModel {
     let totalCasts = 4
 
+    var mode: GameMode = .quickRun
     var castsRemaining: Int
-    var phase: GamePhase = .idle
+    var phase: GamePhase = .home
     var currentFish: Fish?
     var hasCompletedOnboarding: Bool
     var selectedKit: EquipmentKit = .tunaTrolling
-    var tension: Double = 0
-    var progress: Double = 0
+    var useLiveBait = false
     var runBestCatch: Fish?
+
+    /// The career, once one has been started or loaded.
+    private(set) var career: Career?
+    /// The spoken summary of the last fight's consequences (career only).
+    private(set) var lastCatchReport = CatchReport()
+    private(set) var lastTripReport = TripReport()
+    /// The most recent shop or skill message, shown on screen as well as spoken.
+    private(set) var shopMessage: String?
 
     private(set) var allTimeBestWeight: Double
     private(set) var allTimeBestSpeciesName: String?
+
+    private var fight: FightEngine?
+    var tension: Double { fight?.tension ?? 0 }
+    var progress: Double { fight?.progress ?? 0 }
 
     private var timer: Timer?
     private let bestWeightKey = "DeepSeaFishing.bestWeight"
     private let bestSpeciesKey = "DeepSeaFishing.bestSpecies"
     private let onboardingKey = "DeepSeaFishing.hasCompletedOnboarding"
-    // A run in progress (mid-run, not mid-fight) is persisted so an app kill
-    // between casts doesn't silently erase how many casts are left and the
-    // best catch so far - only landFish() writes these, so a fight that's
-    // actively in progress when the app dies is lost, but the surrounding
-    // run survives.
+    // A quick run in progress (mid-run, not mid-fight) is persisted so an
+    // app kill between casts doesn't silently erase how many casts are left
+    // and the best catch so far.
     private let runCastsRemainingKey = "DeepSeaFishing.runCastsRemaining"
     private let runBestWeightKey = "DeepSeaFishing.runBestWeight"
     private let runBestSpeciesKey = "DeepSeaFishing.runBestSpecies"
@@ -55,15 +82,26 @@ final class GameViewModel {
         return currentFish?.species
     }
 
+    var hasSavedCareer: Bool { career != nil }
+
+    /// Species offered on the target screen.
+    var targetableSpecies: [FishSpecies] {
+        if mode == .career, let ground = career?.trip?.ground { return ground.species }
+        return FishSpecies.quickRun
+    }
+
+    /// Outfits offered on the gear screen.
+    var availableKits: [EquipmentKit] {
+        mode == .career ? (career?.ownedKits ?? []) : EquipmentKit.quickRun
+    }
+
     init() {
         allTimeBestWeight = UserDefaults.standard.double(forKey: bestWeightKey)
         allTimeBestSpeciesName = UserDefaults.standard.string(forKey: bestSpeciesKey)
         hasCompletedOnboarding = UserDefaults.standard.bool(forKey: onboardingKey)
+        career = CareerStore.load()
 
         // Only restore a genuinely mid-run state (some casts used, some left).
-        // 0 remaining means the run had already finished (RunOverView) when the
-        // app died - starting fresh is the right outcome there, not resuming a
-        // 0-casts-left idle screen with no valid next action.
         let defaults = UserDefaults.standard
         if let savedCasts = defaults.object(forKey: runCastsRemainingKey) as? Int,
            savedCasts > 0, savedCasts < totalCasts {
@@ -80,21 +118,33 @@ final class GameViewModel {
             defaults.removeObject(forKey: runBestSpeciesKey)
         }
 
-        phase = hasCompletedOnboarding ? .idle : .onboarding
+        phase = hasCompletedOnboarding ? .home : .onboarding
         audio.start()
     }
 
     func completeOnboarding() {
         hasCompletedOnboarding = true
         UserDefaults.standard.set(true, forKey: onboardingKey)
-        phase = .idle
+        phase = .home
     }
 
     func showOnboarding() {
         phase = .onboarding
     }
 
+    func goHome() {
+        phase = .home
+    }
+
+    // MARK: - Quick Run
+
+    func enterQuickRun() {
+        mode = .quickRun
+        phase = .idle
+    }
+
     func startRun() {
+        mode = .quickRun
         castsRemaining = totalCasts
         runBestCatch = nil
         currentFish = nil
@@ -105,14 +155,142 @@ final class GameViewModel {
         defaults.removeObject(forKey: runBestSpeciesKey)
     }
 
+    // MARK: - Career
+
+    func continueCareer() {
+        guard career != nil else { return startNewCareer() }
+        mode = .career
+        showNextStoryOr(career?.trip != nil ? .atSea : .dock)
+    }
+
+    func startNewCareer() {
+        mode = .career
+        career = Career.newCareer()
+        saveCareer()
+        showNextStoryOr(.dock)
+    }
+
+    /// The story beat currently on screen.
+    var currentStoryBeat: StoryBeat? { career?.pendingStory.first }
+
+    func dismissStoryBeat() {
+        guard career?.pendingStory.isEmpty == false else { return showNextStoryOr(.dock) }
+        career?.pendingStory.removeFirst()
+        saveCareer()
+        showNextStoryOr(career?.trip != nil ? .atSea : .dock)
+    }
+
+    private func showNextStoryOr(_ next: GamePhase) {
+        phase = (career?.pendingStory.isEmpty == false) ? .story : next
+    }
+
+    func openDockScreen(_ screen: GamePhase) {
+        shopMessage = nil
+        phase = screen
+    }
+
+    func backToDock() {
+        shopMessage = nil
+        phase = .dock
+    }
+
+    func headOut(to ground: FishingGround) {
+        guard var career else { return }
+        switch career.startTrip(to: ground) {
+        case .success(let message):
+            self.career = career
+            saveCareer()
+            phase = .atSea
+            announce(message)
+        case .failure(.cantAffordFuel):
+            announce("You can't afford the fuel to reach \(ground.displayName). It costs \(ground.fuelCost) dollars.")
+        case .failure(.locked):
+            announce("\(ground.title) isn't open to you yet.")
+        case .failure(.alreadyOut):
+            phase = .atSea
+        }
+    }
+
+    func returnToDock() {
+        guard var career else { return }
+        lastTripReport = career.endTrip()
+        self.career = career
+        saveCareer()
+        audio.playCash()
+        phase = .tripSummary
+        announce(lastTripReport.lines.joined(separator: " "))
+    }
+
+    func finishTripSummary() {
+        showNextStoryOr(.dock)
+    }
+
+    func buyOrUpgrade(_ kit: EquipmentKit) { applyShop { $0.buyOrUpgrade(kit) } }
+    func buyLiveBait() { applyShop { $0.buyLiveBait() } }
+    func buy(_ upgrade: BoatUpgrade) { applyShop { $0.buy(upgrade) } }
+
+    private func applyShop(_ action: (inout Career) -> Result<String, Career.ShopError>) {
+        guard var career else { return }
+        let message: String
+        switch action(&career) {
+        case .success(let text):
+            message = text
+            audio.playCash()
+        case .failure(.notEnoughMoney(let needed)):
+            message = "That costs \(needed) dollars, and you have \(career.money)."
+        case .failure(.maxed):
+            message = "That's already the best there is."
+        case .failure(.alreadyOwned):
+            message = "The Marisol already has that."
+        case .failure(.notOwned):
+            message = "You don't own that outfit yet."
+        }
+        self.career = career
+        saveCareer()
+        shopMessage = message
+        announce(message)
+    }
+
+    func spendSkillPoint(on skill: AnglerSkill) {
+        guard var career else { return }
+        let message = career.spendSkillPoint(on: skill)
+        self.career = career
+        saveCareer()
+        shopMessage = message
+        announce(message)
+    }
+
+    func eraseCareer() {
+        CareerStore.delete()
+        career = nil
+        phase = .home
+        announce("Career erased.")
+    }
+
+    private func saveCareer() {
+        if let career { CareerStore.save(career) }
+    }
+
+    // MARK: - Shared casting flow
+
     func beginTargeting() {
         phase = .selectingSpecies
     }
 
+    func cancelTargeting() {
+        phase = mode == .career ? .atSea : .idle
+    }
+
     func selectSpecies(_ species: FishSpecies) {
-        selectedKit = species.recommendedKit
+        let kits = availableKits
+        selectedKit = kits.contains(species.recommendedKit) ? species.recommendedKit : (kits.first ?? species.recommendedKit)
+        useLiveBait = false
         phase = .selectingGear(species)
-        announce("Gearing up for \(species.displayName).")
+        var line = "Gearing up for \(species.displayName)."
+        if mode == .career, !kits.contains(species.recommendedKit) {
+            line += " You don't own the \(species.recommendedKit.displayName) this fish calls for - the tackle shop sells it."
+        }
+        announce(line)
     }
 
     func selectKit(_ kit: EquipmentKit) {
@@ -122,9 +300,7 @@ final class GameViewModel {
     /// Whether tilt controls are usable on this device (always false in Simulator).
     var isMotionAvailable: Bool { motion.isAvailable }
 
-    /// Re-zeroes tilt against the phone's current angle - the fallback for a
-    /// fight where tilt feels backwards or stuck, since calibration only
-    /// happens once automatically, at fight start.
+    /// Re-zeroes tilt against the phone's current angle.
     func recalibrateTilt() {
         motion.recalibrate()
         announce("Tilt recalibrated.")
@@ -132,61 +308,73 @@ final class GameViewModel {
 
     func cast() {
         guard case .selectingGear(let species) = phase else { return }
-        currentFish = Fish.random(species: species)
-        tension = 0
-        progress = 0
+        let fish: Fish
+        let modifiers: FightModifiers
+        if mode == .career, var career {
+            fish = career.hookFish(target: species, useLiveBait: useLiveBait)
+            modifiers = career.modifiers(for: fish, kit: selectedKit)
+            self.career = career
+            saveCareer()
+        } else {
+            fish = Fish.random(species: species)
+            var m = FightModifiers.original
+            if selectedKit != species.recommendedKit { m.applyMismatch() }
+            modifiers = m
+        }
+        currentFish = fish
+        fight = FightEngine(fish: fish, modifiers: modifiers)
         phase = .fighting
+
         let mismatchWarning = isGearMatched ? "" : " Your gear doesn't match this fish, so the fight will be tougher."
-        announce("Fish on! A \(species.displayName) takes the bait.\(mismatchWarning)")
+        if let name = fish.legendName, let legend = Legend.allCases.first(where: { $0.name == name }) {
+            announce("\(legend.hookLine)\(mismatchWarning)")
+        } else {
+            announce("Fish on! A \(species.displayName) takes the bait.\(mismatchWarning)")
+        }
         haptics.playBite()
         audio.playBite()
         motion.start()
         startTimer()
     }
 
-    /// Re-speaks the current fight state on demand (VoiceOver magic tap), so a
-    /// player who missed or was talked over by a live announcement can recover
-    /// it rather than having no way to find out what's happening right now.
+    /// Re-speaks the current fight state on demand (VoiceOver magic tap).
     func announceCurrentState() {
         guard phase == .fighting, let fish = currentFish else { return }
         let mismatchNote = isGearMatched ? "" : " Gear mismatched."
         announce(
-            "Fighting a \(fish.species.displayName). "
+            "Fighting \(fish.legendName ?? "a \(fish.species.displayName)"). "
             + "Line to shore \(Int(progress * 100)) percent. "
             + "Tension \(Int(tension * 100)) percent.\(mismatchNote)"
         )
     }
 
     func reelIn() {
-        applyReel(multiplier: 1.0)
+        guard phase == .fighting else { return }
+        fight?.reel()
+        haptics.updateTension(tension)
+        audio.playReelClick()
         checkOutcome()
     }
 
     func easeLine() {
-        applyEase(multiplier: 1.0)
-    }
-
-    private func applyReel(multiplier: Double) {
         guard phase == .fighting else { return }
-        let gainMultiplier = isGearMatched ? 1.0 : 0.8
-        let tensionMultiplier = isGearMatched ? 1.0 : 1.15
-        progress = min(1, progress + 0.09 * gainMultiplier * multiplier)
-        tension = min(1, tension + 0.11 * tensionMultiplier * multiplier)
-        haptics.updateTension(tension)
-        audio.playReelClick()
-    }
-
-    private func applyEase(multiplier: Double) {
-        guard phase == .fighting else { return }
-        tension = max(0, tension - 0.16 * multiplier)
-        progress = max(0, progress - 0.02 * multiplier)
+        fight?.ease()
         haptics.updateTension(tension)
         audio.playEase()
     }
 
     func acknowledgeResult() {
         currentFish = nil
-        phase = castsRemaining == 0 ? .runOver : .idle
+        fight = nil
+        if mode == .career {
+            if (career?.trip?.castsLeft ?? 0) == 0 {
+                returnToDock()
+            } else {
+                phase = .atSea
+            }
+        } else {
+            phase = castsRemaining == 0 ? .runOver : .idle
+        }
     }
 
     private func startTimer() {
@@ -202,30 +390,28 @@ final class GameViewModel {
     }
 
     private func tick() {
-        guard phase == .fighting, let species = currentFish?.species else { return }
+        guard phase == .fighting, var fight, let fish = currentFish else { return }
 
-        tension = max(0, tension - 0.03)
-
-        let aggressionMultiplier = isGearMatched ? 1.0 : 1.3
-        let runStrengthMultiplier = isGearMatched ? 1.0 : 1.25
-
-        var runOccurredThisTick = false
-        if Double.random(in: 0...1) < species.aggression * aggressionMultiplier {
-            let spike = Double.random(in: species.runStrength) * runStrengthMultiplier
-            tension = min(1, tension + spike)
-            progress = max(0, progress - 0.03)
-            announce("The \(species.displayName.lowercased()) \(species.runDescription)!")
-            haptics.playRun(for: species)
-            audio.playRun(for: species)
-            runOccurredThisTick = true
+        let ran = fight.tick()
+        if ran {
+            let who = fish.legendName ?? "The \(fish.species.displayName.lowercased())"
+            announce("\(who) \(fish.species.runDescription)!")
+            haptics.playRun(for: fish.species)
+            audio.playRun(for: fish.species)
         }
 
         // Tilt back to reel in, tilt forward to ease the line, alongside the buttons.
         switch motion.tiltState {
-        case .reeling: applyReel(multiplier: 0.5)
-        case .easing: applyEase(multiplier: 0.5)
-        case .neutral: break
+        case .reeling:
+            fight.reel(multiplier: 0.5)
+            audio.playReelClick()
+        case .easing:
+            fight.ease(multiplier: 0.5)
+            audio.playEase()
+        case .neutral:
+            break
         }
+        self.fight = fight
 
         haptics.updateTension(tension)
         audio.playProgressPulse(progress)
@@ -233,18 +419,16 @@ final class GameViewModel {
         // A run's tension spike used to be able to end the fight in the same
         // tick its haptic/audio cue started - 0ms reaction time. Skip the snap
         // check on the tick a run occurs, so the earliest a run can end the
-        // fight is the *next* tick (~0.5s later), giving the player a real
-        // chance to perceive the cue and react (ease off) before losing.
-        checkOutcome(allowSnap: !runOccurredThisTick)
+        // fight is the *next* tick (~0.5s later).
+        checkOutcome(allowSnap: !ran)
     }
 
     private func checkOutcome(allowSnap: Bool = true) {
-        guard let fish = currentFish else { return }
-
-        if allowSnap && tension >= 1 {
-            landFish(fish, landed: false)
-        } else if progress >= 1 {
-            landFish(fish, landed: true)
+        guard let fight, let fish = currentFish else { return }
+        switch fight.outcome(allowSnap: allowSnap) {
+        case .snapped: landFish(fish, landed: false)
+        case .landed: landFish(fish, landed: true)
+        case .ongoing: break
         }
     }
 
@@ -252,30 +436,41 @@ final class GameViewModel {
         stopTimer()
         motion.stop()
         haptics.stopTension()
-        castsRemaining -= 1
 
+        var recordNote = ""
+        if mode == .career, var career {
+            lastCatchReport = career.recordFight(fish, landed: landed)
+            self.career = career
+            saveCareer()
+        } else {
+            castsRemaining -= 1
+            if landed {
+                if runBestCatch == nil || fish.weight > runBestCatch!.weight {
+                    runBestCatch = fish
+                }
+            }
+            persistRunState()
+        }
+
+        // The all-time record spans both modes.
+        if landed, fish.weight > allTimeBestWeight {
+            allTimeBestWeight = fish.weight
+            allTimeBestSpeciesName = fish.species.displayName
+            UserDefaults.standard.set(allTimeBestWeight, forKey: bestWeightKey)
+            UserDefaults.standard.set(allTimeBestSpeciesName, forKey: bestSpeciesKey)
+            recordNote = " New all-time record!"
+        }
+
+        let details = mode == .career ? " " + lastCatchReport.lines.joined(separator: " ") : ""
         if landed {
-            if runBestCatch == nil || fish.weight > runBestCatch!.weight {
-                runBestCatch = fish
-            }
-            let isNewRecord = fish.weight > allTimeBestWeight
-            if isNewRecord {
-                allTimeBestWeight = fish.weight
-                allTimeBestSpeciesName = fish.species.displayName
-                UserDefaults.standard.set(allTimeBestWeight, forKey: bestWeightKey)
-                UserDefaults.standard.set(allTimeBestSpeciesName, forKey: bestSpeciesKey)
-            }
-            let recordNote = isNewRecord ? " New all-time record!" : ""
-            announce("Landed! A \(fish.weightDescription) \(fish.species.displayName).\(recordNote)")
+            announce("Landed! A \(fish.weightDescription) \(fish.legendName ?? fish.species.displayName).\(recordNote)\(details)")
             haptics.playLanded()
             audio.playLanded()
         } else {
-            announce("The line snapped. The \(fish.species.displayName) got away.")
+            announce("The line snapped. \(fish.legendName ?? "The \(fish.species.displayName)") got away.\(details)")
             haptics.playSnap()
             audio.playSnap()
         }
-
-        persistRunState()
 
         phase = .result(landed: landed)
     }
@@ -284,11 +479,7 @@ final class GameViewModel {
         AccessibilityNotification.Announcement(AttributedString(text)).post()
     }
 
-    /// Saves how many casts are left and the best catch so far, so a run
-    /// survives the app being killed between casts. Called after every cast
-    /// resolves (landed or snapped) - never mid-fight, since resuming a fight
-    /// in progress would also need to restore the audio/haptic engines'
-    /// live state, which isn't worth the complexity for a single abandoned cast.
+    /// Saves how many quick-run casts are left and the best catch so far.
     private func persistRunState() {
         let defaults = UserDefaults.standard
         defaults.set(castsRemaining, forKey: runCastsRemainingKey)

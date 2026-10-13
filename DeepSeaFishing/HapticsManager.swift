@@ -38,9 +38,11 @@ final class HapticsManager {
         ])
     }
 
+    /// Keyed by fight style rather than species, so every species - including
+    /// the ones added for the career - has a run you can tell apart by feel.
     func playRun(for species: FishSpecies) {
-        switch species {
-        case .marlin:
+        switch species.fightStyle {
+        case .burst:
             // Sharp, staccato bursts for a tailwalk.
             play(events: (0..<3).map { i in
                 CHHapticEvent(eventType: .hapticTransient, parameters: [
@@ -48,7 +50,7 @@ final class HapticsManager {
                     CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.9)
                 ], relativeTime: Double(i) * 0.12)
             })
-        case .swordfish:
+        case .deep:
             // Long, deep, low-sharpness rumble for a dive. A sharp lead-in
             // transient marks it as a distinct *event* rather than letting it
             // read as a continuation of the tension hum, which shares this
@@ -63,7 +65,7 @@ final class HapticsManager {
                     CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.15)
                 ], relativeTime: 0.05, duration: 0.55)
             ])
-        case .tuna:
+        case .steady:
             // One steady, strong pull.
             play(events: [
                 CHHapticEvent(eventType: .hapticContinuous, parameters: [

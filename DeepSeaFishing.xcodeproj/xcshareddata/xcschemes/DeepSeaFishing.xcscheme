@@ -39,6 +39,17 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "51A5330DE0014CB6BE5C5401"
+               BuildableName = "DeepSeaFishingTests.xctest"
+               BlueprintName = "DeepSeaFishingTests"
+               ReferencedContainer = "container:DeepSeaFishing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

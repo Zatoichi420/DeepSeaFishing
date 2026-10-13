@@ -55,4 +55,21 @@ targets:
           UIApplicationSupportsMultipleScenes: false
         NSMotionUsageDescription: "Deep Sea Fishing uses motion sensors so you can cast and reel by tilting your device, and feel the fight through haptics."
     scheme:
-      testTargets: []
+      testTargets:
+        - DeepSeaFishingTests
+
+  DeepSeaFishingTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: DeepSeaFishingTests
+    dependencies:
+      - target: DeepSeaFishing
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.orlandojohnson.DeepSeaFishingTests
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: N724Z4725Y
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
