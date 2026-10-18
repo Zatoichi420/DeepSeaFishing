@@ -34,7 +34,9 @@ final class GameViewModel {
 
     var mode: GameMode = .quickRun
     var castsRemaining: Int
-    var phase: GamePhase = .home
+    var phase: GamePhase = .home {
+        didSet { updateAudioScene() }
+    }
     var currentFish: Fish?
     var hasCompletedOnboarding: Bool
     var selectedKit: EquipmentKit = .tunaTrolling
@@ -332,6 +334,7 @@ final class GameViewModel {
             announce("Fish on! A \(species.displayName) takes the bait.\(mismatchWarning)")
         }
         haptics.playBite()
+        audio.playCast()
         audio.playBite()
         motion.start()
         startTimer()
@@ -352,6 +355,7 @@ final class GameViewModel {
         guard phase == .fighting else { return }
         fight?.reel()
         haptics.updateTension(tension)
+        audio.updateTension(tension)
         audio.playReelClick()
         checkOutcome()
     }
@@ -360,6 +364,7 @@ final class GameViewModel {
         guard phase == .fighting else { return }
         fight?.ease()
         haptics.updateTension(tension)
+        audio.updateTension(tension)
         audio.playEase()
     }
 
@@ -414,6 +419,7 @@ final class GameViewModel {
         self.fight = fight
 
         haptics.updateTension(tension)
+        audio.updateTension(tension)
         audio.playProgressPulse(progress)
 
         // A run's tension spike used to be able to end the fight in the same
@@ -436,6 +442,7 @@ final class GameViewModel {
         stopTimer()
         motion.stop()
         haptics.stopTension()
+        audio.stopFight()
 
         var recordNote = ""
         if mode == .career, var career {
@@ -473,6 +480,20 @@ final class GameViewModel {
         }
 
         phase = .result(landed: landed)
+    }
+
+    /// Tells the soundscape where the player is: the harbor, out at sea on a
+    /// given ground, or locked in a fight.
+    private func updateAudioScene() {
+        let ground = mode == .career ? (career?.trip?.ground ?? .coastalShelf) : .coastalShelf
+        switch phase {
+        case .onboarding, .home, .runOver, .story, .dock, .groundSelect, .shop, .skills, .logbook, .tripSummary:
+            audio.setScene(.harbor)
+        case .idle, .atSea, .selectingSpecies, .selectingGear, .result:
+            audio.setScene(.atSea, ground: ground)
+        case .fighting:
+            audio.setScene(.fighting, ground: ground)
+        }
     }
 
     private func announce(_ text: String) {
