@@ -1,3 +1,16 @@
+#if os(tvOS)
+import Foundation
+
+/// Apple TV has no motion sensors; tilt controls simply never engage.
+final class MotionManager {
+    enum TiltState { case neutral, reeling, easing }
+    let tiltState: TiltState = .neutral
+    var isAvailable: Bool { false }
+    func start() {}
+    func stop() {}
+    func recalibrate() {}
+}
+#else
 import CoreMotion
 
 /// Tilt the phone back (toward yourself) to reel in; tilt it forward (away from
@@ -74,3 +87,4 @@ final class MotionManager {
         }
     }
 }
+#endif

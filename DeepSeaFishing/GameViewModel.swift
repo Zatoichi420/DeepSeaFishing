@@ -19,6 +19,8 @@ enum GamePhase: Equatable {
     case shop
     case skills
     case logbook
+    case controls
+    case remotePad
     case atSea
     case tripSummary
     // Shared
@@ -35,7 +37,11 @@ final class GameViewModel {
     var mode: GameMode = .quickRun
     var castsRemaining: Int
     var phase: GamePhase = .home {
-        didSet { updateAudioScene() }
+        didSet {
+            updateAudioScene()
+            if case .result = phase { resultShownAt = Date() }
+            if remoteHost.isConnected { remoteHost.send(.fighting(phase == .fighting)) }
+        }
     }
     var currentFish: Fish?
     var hasCompletedOnboarding: Bool
@@ -72,6 +78,20 @@ final class GameViewModel {
     private let motion = MotionManager()
     private let haptics = HapticsManager()
     private let audio = AudioManager()
+    private let controller = ControllerManager()
+    /// Apple TV: lets an iPhone join as the controller.
+    let remoteHost = RemoteHost()
+    /// iPhone: acts as the Apple TV's controller.
+    let pad = PadClient()
+    @ObservationIgnored private lazy var remoteHaptics = RemoteHaptics(host: remoteHost)
+    /// The name of the connected game controller, if any.
+    private(set) var controllerName: String?
+    /// Which controller buttons do what; changed on the Controls screen.
+    private(set) var controls = ControlScheme.load()
+    /// The action waiting for the player to press its new button, if any.
+    private(set) var remapping: ControlAction?
+    /// Stops a mashed button from skipping a result screen the instant it appears.
+    private var resultShownAt = Date.distantPast
 
     /// Whether the selected gear matches the fish currently being targeted or fought.
     var isGearMatched: Bool {
@@ -122,6 +142,8 @@ final class GameViewModel {
 
         phase = hasCompletedOnboarding ? .home : .onboarding
         audio.start()
+        configureController()
+        configureRemote()
     }
 
     func completeOnboarding() {
@@ -135,6 +157,7 @@ final class GameViewModel {
     }
 
     func goHome() {
+        if remapping != nil { cancelRemapQuietly() }
         phase = .home
     }
 
@@ -333,7 +356,7 @@ final class GameViewModel {
         } else {
             announce("Fish on! A \(species.displayName) takes the bait.\(mismatchWarning)")
         }
-        haptics.playBite()
+        buzz { $0.playBite() }
         audio.playCast()
         audio.playBite()
         motion.start()
@@ -351,19 +374,19 @@ final class GameViewModel {
         )
     }
 
-    func reelIn() {
+    func reelIn(multiplier: Double = 1.0) {
         guard phase == .fighting else { return }
-        fight?.reel()
-        haptics.updateTension(tension)
+        fight?.reel(multiplier: multiplier)
+        buzz { $0.updateTension(tension) }
         audio.updateTension(tension)
         audio.playReelClick()
         checkOutcome()
     }
 
-    func easeLine() {
+    func easeLine(multiplier: Double = 1.0) {
         guard phase == .fighting else { return }
-        fight?.ease()
-        haptics.updateTension(tension)
+        fight?.ease(multiplier: multiplier)
+        buzz { $0.updateTension(tension) }
         audio.updateTension(tension)
         audio.playEase()
     }
@@ -401,7 +424,7 @@ final class GameViewModel {
         if ran {
             let who = fish.legendName ?? "The \(fish.species.displayName.lowercased())"
             announce("\(who) \(fish.species.runDescription)!")
-            haptics.playRun(for: fish.species)
+            buzz { $0.playRun(for: fish.species) }
             audio.playRun(for: fish.species)
         }
 
@@ -418,7 +441,7 @@ final class GameViewModel {
         }
         self.fight = fight
 
-        haptics.updateTension(tension)
+        buzz { $0.updateTension(tension) }
         audio.updateTension(tension)
         audio.playProgressPulse(progress)
 
@@ -441,7 +464,7 @@ final class GameViewModel {
     private func landFish(_ fish: Fish, landed: Bool) {
         stopTimer()
         motion.stop()
-        haptics.stopTension()
+        buzz { $0.stopTension() }
         audio.stopFight()
 
         var recordNote = ""
@@ -471,24 +494,160 @@ final class GameViewModel {
         let details = mode == .career ? " " + lastCatchReport.lines.joined(separator: " ") : ""
         if landed {
             announce("Landed! A \(fish.weightDescription) \(fish.legendName ?? fish.species.displayName).\(recordNote)\(details)")
-            haptics.playLanded()
+            buzz { $0.playLanded() }
             audio.playLanded()
         } else {
             announce("The line snapped. \(fish.legendName ?? "The \(fish.species.displayName)") got away.\(details)")
-            haptics.playSnap()
+            buzz { $0.playSnap() }
             audio.playSnap()
         }
 
         phase = .result(landed: landed)
     }
 
+    // MARK: - Game controller
+
+    private func configureController() {
+        controller.onReel = { [weak self] in self?.reelIn() }
+        controller.onEase = { [weak self] in self?.easeLine() }
+        controller.onStatus = { [weak self] in self?.announceCurrentState() }
+        controller.onConfirm = { [weak self] in
+            guard let self, case .result = self.phase,
+                  Date().timeIntervalSince(self.resultShownAt) > 1.0 else { return }
+            self.acknowledgeResult()
+        }
+        controller.onConnectionChange = { [weak self] name in
+            guard let self else { return }
+            self.controllerName = name
+            self.remapping = nil
+            self.announce(name.map { "\($0) connected. \(self.controlsSummary)" } ?? "Controller disconnected.")
+        }
+        controller.scheme = controls
+        controller.start()
+    }
+
+    /// Whether a controller is connected, so buttons can be remapped by pressing them.
+    var canRemap: Bool { controllerName != nil }
+
+    /// A spoken-style list of what each button does, in this controller's own names.
+    var controlsSummary: String { controls.summary(name: controller.displayName(for:)) }
+
+    func buttonNames(for action: ControlAction) -> String {
+        let names = controls.inputs(for: action).map(controller.displayName(for:))
+        return names.isEmpty ? "No button" : names.joined(separator: ", ")
+    }
+
+    /// Waits for the next controller press and gives that button to `action`.
+    func beginRemap(_ action: ControlAction, adding: Bool) {
+        guard controller.isConnected else {
+            announce("Connect a controller first, then try again.")
+            return
+        }
+        remapping = action
+        announce("Press the button you want for \(action.title). Press Cancel to keep things as they are.")
+        controller.captureNextPress { [weak self] input in
+            guard let self else { return }
+            self.remapping = nil
+            let name = self.controller.displayName(for: input)
+            if let displaced = self.controls.assign(input, to: action, replacing: !adding) {
+                let note = displaced.nowEmpty ? "\(displaced.action.title) now has no button, so give it one." : "\(displaced.action.title) lost it."
+                self.announce("\(name) now \(adding ? "also does" : "is") \(action.title). \(note)")
+            } else {
+                self.announce("\(name) now \(adding ? "also does" : "is") \(action.title).")
+            }
+            self.saveControls()
+        }
+    }
+
+    private func cancelRemapQuietly() {
+        controller.cancelCapture()
+        remapping = nil
+    }
+
+    func cancelRemap() {
+        controller.cancelCapture()
+        remapping = nil
+        announce("Cancelled. Nothing changed.")
+    }
+
+    func resetControls() {
+        controller.cancelCapture()
+        remapping = nil
+        controls = .standard
+        saveControls()
+        announce("Controller buttons reset. \(controlsSummary)")
+    }
+
+    private func saveControls() {
+        controller.scheme = controls
+        controls.save()
+    }
+
+    func showControls() {
+        phase = .controls
+    }
+
+    /// Runs a haptic cue on the phone and on the controller, when it has haptics.
+    private func buzz(_ cue: (any HapticSink) -> Void) {
+        cue(haptics)
+        if let rumble = controller.rumble { cue(rumble) }
+        if remoteHost.isConnected { cue(remoteHaptics) }
+    }
+
+    // MARK: - iPhone as the Apple TV's controller
+
+    private func configureRemote() {
+        remoteHost.onCommand = { [weak self] command in
+            guard let self else { return }
+            switch command {
+            case .reel:
+                reelIn()
+                if case .result = phase, Date().timeIntervalSince(resultShownAt) > 1.0 { acknowledgeResult() }
+            case .ease: easeLine()
+            case .status: announceCurrentState()
+            case .tiltReel: reelIn(multiplier: 0.5)
+            case .tiltEase: easeLine(multiplier: 0.5)
+            }
+        }
+        remoteHost.onStateChange = { [weak self] state in
+            guard let self else { return }
+            switch state {
+            case .connected(let name):
+                announce("\(name) connected as your controller.")
+                remoteHost.send(.fighting(phase == .fighting))
+            case .waiting: announce("Waiting for your iPhone. The pairing code is \(remoteHost.pairingCode.map(String.init).joined(separator: " ")).")
+            case .off: break
+            }
+        }
+        pad.onSpeak = { text in
+            AccessibilityNotification.Announcement(AttributedString(text)).post()
+        }
+    }
+
+    /// Phone side: open the controller screen.
+    func showRemotePad() {
+        phase = .remotePad
+        pad.startSearching()
+    }
+
+    func leaveRemotePad() {
+        pad.disconnect()
+        phase = .controls
+    }
+
+    /// TV side: let an iPhone join.
+    func startWaitingForPhone() { remoteHost.startWaiting() }
+    func stopWaitingForPhone() { remoteHost.stop() }
+
     /// Tells the soundscape where the player is: the harbor, out at sea on a
     /// given ground, or locked in a fight.
     private func updateAudioScene() {
         let ground = mode == .career ? (career?.trip?.ground ?? .coastalShelf) : .coastalShelf
         switch phase {
-        case .onboarding, .home, .runOver, .story, .dock, .groundSelect, .shop, .skills, .logbook, .tripSummary:
+        case .onboarding, .home, .runOver, .story, .dock, .groundSelect, .shop, .skills, .logbook, .tripSummary, .controls:
             audio.setScene(.harbor)
+        case .remotePad:
+            audio.setScene(.silent)
         case .idle, .atSea, .selectingSpecies, .selectingGear, .result:
             audio.setScene(.atSea, ground: ground)
         case .fighting:
@@ -498,6 +657,7 @@ final class GameViewModel {
 
     private func announce(_ text: String) {
         AccessibilityNotification.Announcement(AttributedString(text)).post()
+        remoteHost.send(.speak(text))
     }
 
     /// Saves how many quick-run casts are left and the best catch so far.

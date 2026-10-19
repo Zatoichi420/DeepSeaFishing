@@ -19,9 +19,23 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<key>GCSupportedGameControllers</key>
+	<array>
+		<dict>
+			<key>ProfileName</key>
+			<string>ExtendedGamepad</string>
+		</dict>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dsf-pad._tcp</string>
+		<string>_dsf-pad._udp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Deep Sea Fishing finds your Apple TV so your iPhone can be its controller.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Deep Sea Fishing uses motion sensors so you can cast and reel by tilting your device, and feel the fight through haptics.</string>
 	<key>UIApplicationSceneManifest</key>

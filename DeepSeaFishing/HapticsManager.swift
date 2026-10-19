@@ -3,7 +3,18 @@ import CoreHaptics
 /// Distinct haptic feedback per game moment, so the fight can be felt without
 /// looking at the screen: a bite, a species-specific run, a rising tension hum,
 /// landing a fish, and a snapped line.
-final class HapticsManager {
+/// Anything that can make the fight felt: the phone's own motor, a game
+/// controller's rumble, or an iPhone acting as the Apple TV's controller.
+protocol HapticSink: AnyObject {
+    func playBite()
+    func playRun(for species: FishSpecies)
+    func playLanded()
+    func playSnap()
+    func updateTension(_ level: Double)
+    func stopTension()
+}
+
+final class HapticsManager: HapticSink {
     private var engine: CHHapticEngine?
     private var tensionPlayer: CHHapticAdvancedPatternPlayer?
 
@@ -14,18 +25,28 @@ final class HapticsManager {
         engine != nil
     }
 
-    init() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+    /// The phone's own haptics.
+    convenience init() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics,
+              let engine = try? CHHapticEngine() else {
+            self.init(engine: nil)
+            return
+        }
+        self.init(engine: engine)
+    }
+
+    /// Any haptic engine - the phone's, or one created from a game controller.
+    init(engine: CHHapticEngine?) {
+        guard let engine else { return }
+        engine.resetHandler = { [weak engine] in
+            try? engine?.start()
+        }
+        engine.stoppedHandler = { _ in }
         do {
-            let engine = try CHHapticEngine()
-            engine.resetHandler = { [weak engine] in
-                try? engine?.start()
-            }
-            engine.stoppedHandler = { _ in }
             try engine.start()
             self.engine = engine
         } catch {
-            engine = nil
+            self.engine = nil
         }
     }
 
@@ -41,7 +62,11 @@ final class HapticsManager {
     /// Keyed by fight style rather than species, so every species - including
     /// the ones added for the career - has a run you can tell apart by feel.
     func playRun(for species: FishSpecies) {
-        switch species.fightStyle {
+        playRun(style: species.fightStyle)
+    }
+
+    func playRun(style: FightStyle) {
+        switch style {
         case .burst:
             // Sharp, staccato bursts for a tailwalk.
             play(events: (0..<3).map { i in

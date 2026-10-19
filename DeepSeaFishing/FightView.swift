@@ -45,6 +45,13 @@ struct FightView: View {
                 .accessibilityHint("Re-zeroes tilt to however you're currently holding the phone.")
             }
 
+            if let name = viewModel.controllerName {
+                Text("\(name). \(viewModel.controlsSummary)")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+
             MeterView(title: "Line to shore", value: viewModel.progress, tint: .green)
             MeterView(title: "Line tension", value: viewModel.tension, tint: .red)
 

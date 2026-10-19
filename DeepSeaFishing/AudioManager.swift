@@ -11,6 +11,8 @@ final class AudioManager {
         case harbor
         case atSea
         case fighting
+        /// Nothing plays: the phone is acting as an Apple TV controller.
+        case silent
     }
 
     private enum Layer: CaseIterable {
@@ -175,6 +177,8 @@ final class AudioManager {
             layerTarget[.wavesB] = min(0.45 * waveScale, 1)
             layerTarget[.engine] = ground == .deepTrench ? 0.24 : 0.30
             layerTarget[.rigging] = ground == .deepTrench ? 0.55 : 0.40
+        case .silent:
+            for layer in Layer.allCases { layerTarget[layer] = 0 }
         case .fighting:
             layerTarget[.wavesA] = min(0.60 * waveScale, 1)
             layerTarget[.wavesB] = min(0.45 * waveScale, 1)
@@ -208,13 +212,13 @@ final class AudioManager {
 
         let now = Date()
         if now >= nextGull {
-            if scene != .fighting, ground != .deepTrench, let clip = clips[.gulls] {
+            if scene != .fighting, scene != .silent, ground != .deepTrench, let clip = clips[.gulls] {
                 playBuffer(clip, volume: Float.random(in: 0.35...0.6))
             }
             scheduleNextGull()
         }
         if now >= nextSlap {
-            if let clip = clips[.slap] {
+            if scene != .silent, let clip = clips[.slap] {
                 let volume: Float = scene == .harbor ? 0.25 : Float.random(in: 0.4...0.75)
                 playBuffer(clip, volume: volume)
             }

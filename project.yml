@@ -45,9 +45,15 @@ targets:
       properties:
         CFBundleDisplayName: "Deep Sea Fishing"
         CFBundleShortVersionString: "1.0"
-        CFBundleVersion: "1"
+        CFBundleVersion: "2"
         ITSAppUsesNonExemptEncryption: false
         UILaunchScreen: {}
+        NSLocalNetworkUsageDescription: "Deep Sea Fishing finds your Apple TV so your iPhone can be its controller."
+        NSBonjourServices:
+          - _dsf-pad._tcp
+          - _dsf-pad._udp
+        GCSupportedGameControllers:
+          - ProfileName: ExtendedGamepad
         UIRequiresFullScreen: true
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
@@ -60,6 +66,46 @@ targets:
     scheme:
       testTargets:
         - DeepSeaFishingTests
+
+  DeepSeaFishingTV:
+    type: application
+    platform: tvOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: DeepSeaFishing
+        excludes:
+          - "Preview Content/**"
+          - Info.plist
+          - "Assets.xcassets/AppIcon.appiconset/**"
+      - path: DeepSeaFishingTV
+        excludes:
+          - Info.plist
+    settings:
+      base:
+        PRODUCT_NAME: DeepSeaFishing
+        PRODUCT_BUNDLE_IDENTIFIER: com.orlandojohnson.DeepSeaFishing
+        INFOPLIST_FILE: DeepSeaFishingTV/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Development"
+        DEVELOPMENT_TEAM: N724Z4725Y
+        TARGETED_DEVICE_FAMILY: "3"
+        TVOS_DEPLOYMENT_TARGET: "17.0"
+    info:
+      path: DeepSeaFishingTV/Info.plist
+      properties:
+        CFBundleDisplayName: "Deep Sea Fishing"
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        NSLocalNetworkUsageDescription: "Deep Sea Fishing finds your Apple TV so your iPhone can be its controller."
+        NSBonjourServices:
+          - _dsf-pad._tcp
+          - _dsf-pad._udp
+        GCSupportedGameControllers:
+          - ProfileName: ExtendedGamepad
 
   DeepSeaFishingTests:
     type: bundle.unit-test

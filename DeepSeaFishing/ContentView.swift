@@ -26,6 +26,10 @@ struct ContentView: View {
                 SkillsView(viewModel: viewModel)
             case .logbook:
                 LogbookView(viewModel: viewModel)
+            case .controls:
+                ControlsView(viewModel: viewModel)
+            case .remotePad:
+                PadView(viewModel: viewModel)
             case .atSea:
                 AtSeaView(viewModel: viewModel)
             case .tripSummary:
@@ -41,6 +45,9 @@ struct ContentView: View {
             }
         }
         .padding()
+        #if os(tvOS)
+        .padding(.horizontal, 60)
+        #endif
         .animation(.default, value: viewModel.phase)
     }
 }
@@ -99,6 +106,11 @@ struct HomeView: View {
                 Button("How to Play") { viewModel.showOnboarding() }
                     .buttonStyle(.bordered)
                     .frame(minHeight: 44)
+
+                Button("Controls") { viewModel.showControls() }
+                    .buttonStyle(.bordered)
+                    .frame(minHeight: 44)
+                    .accessibilityHint("See what every touch, tilt and controller button does, and change the controller buttons.")
             }
         }
         .alert("Start a new career?", isPresented: $confirmingNewCareer) {
