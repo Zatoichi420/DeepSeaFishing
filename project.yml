@@ -40,12 +40,16 @@ targets:
         DEVELOPMENT_TEAM: N724Z4725Y
         TARGETED_DEVICE_FAMILY: "1,2"
         IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    entitlements:
+      path: DeepSeaFishing/DeepSeaFishing.entitlements
+      properties:
+        com.apple.developer.game-center: true
     info:
       path: DeepSeaFishing/Info.plist
       properties:
         CFBundleDisplayName: "Deep Sea Fishing"
         CFBundleShortVersionString: "1.0"
-        CFBundleVersion: "2"
+        CFBundleVersion: "3"
         ITSAppUsesNonExemptEncryption: false
         UILaunchScreen: {}
         NSLocalNetworkUsageDescription: "Deep Sea Fishing finds your Apple TV so your iPhone can be its controller."
@@ -92,12 +96,16 @@ targets:
         DEVELOPMENT_TEAM: N724Z4725Y
         TARGETED_DEVICE_FAMILY: "3"
         TVOS_DEPLOYMENT_TARGET: "17.0"
+    entitlements:
+      path: DeepSeaFishingTV/DeepSeaFishingTV.entitlements
+      properties:
+        com.apple.developer.game-center: true
     info:
       path: DeepSeaFishingTV/Info.plist
       properties:
         CFBundleDisplayName: "Deep Sea Fishing"
         CFBundleShortVersionString: "1.0"
-        CFBundleVersion: "2"
+        CFBundleVersion: "3"
         ITSAppUsesNonExemptEncryption: false
         UILaunchScreen: {}
         NSLocalNetworkUsageDescription: "Deep Sea Fishing finds your Apple TV so your iPhone can be its controller."

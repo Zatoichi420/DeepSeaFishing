@@ -79,6 +79,7 @@ final class GameViewModel {
     private let haptics = HapticsManager()
     private let audio = AudioManager()
     private let controller = ControllerManager()
+    let gameCenter = GameCenterManager()
     /// Apple TV: lets an iPhone join as the controller.
     let remoteHost = RemoteHost()
     /// iPhone: acts as the Apple TV's controller.
@@ -144,6 +145,12 @@ final class GameViewModel {
         audio.start()
         configureController()
         configureRemote()
+        gameCenter.onMessage = { [weak self] text in self?.announce(text) }
+        // Give the window a moment to exist before Game Center may need to show its sign-in.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.gameCenter.authenticate()
+            if let career = self?.career { self?.gameCenter.careerChanged(career) }
+        }
     }
 
     func completeOnboarding() {
@@ -242,6 +249,7 @@ final class GameViewModel {
         self.career = career
         saveCareer()
         audio.playCash()
+        gameCenter.careerChanged(career)
         phase = .tripSummary
         announce(lastTripReport.lines.joined(separator: " "))
     }
@@ -483,6 +491,12 @@ final class GameViewModel {
         }
 
         // The all-time record spans both modes.
+        if landed {
+            gameCenter.landed(fish)
+        }
+        if mode == .career, let career { gameCenter.careerChanged(career) }
+        if mode == .quickRun, castsRemaining == 0 { gameCenter.quickRunFinished(best: runBestCatch) }
+
         if landed, fish.weight > allTimeBestWeight {
             allTimeBestWeight = fish.weight
             allTimeBestSpeciesName = fish.species.displayName

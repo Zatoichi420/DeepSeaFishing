@@ -45,6 +45,7 @@
 		79EC179DB11FA24E2B229FFB /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
 		7E5D4919FC142643E514544C /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
 		81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 307119121AC9644F9F74E758 /* fish_slap.m4a */; };
+		855CD97AE8D9634EC7409E2B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F495B950570148A258A7D8 /* GameCenterManager.swift */; };
 		86D173DF787DC7228565571E /* fish_creak.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B80BA13DB3D02CFE54BECF94 /* fish_creak.m4a */; };
 		86F40337E11BEDE8F95381EA /* fish_rigging.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8F06CE8CF8EF938B2D74B1C5 /* fish_rigging.wav */; };
 		8AB119EB44ABD41E33BE400A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26008E65A2704C216128EE1F /* OnboardingView.swift */; };
@@ -61,6 +62,7 @@
 		B11A05D9CEA3DFC9C6718B99 /* fish_snap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6198872554EF09C2AE90792B /* fish_snap.m4a */; };
 		B2E6938C9AEA087760A4FAD4 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
 		BB30C23A795DFD01F582BEAE /* Career.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B14606CE77139EA82A56F3 /* Career.swift */; };
+		BB674C2EE0DC45F175EC3FEB /* GameCenterRulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEBDA90C45618BDD124651 /* GameCenterRulesTests.swift */; };
 		BCC276EA34D100485ADECB36 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D20AA02BC231BA5466CBB /* MotionManager.swift */; };
 		BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E679D6FD57403A3A76776061 /* SeededGenerator.swift */; };
 		BE5F91538CF1F5162DCB210E /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94BD649023411565A17D774 /* GameModels.swift */; };
@@ -70,6 +72,7 @@
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
 		DA77F64B626B2CA4A429E9CE /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
 		DA88168D17EE8A410F617456 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
+		DA985B250E5A156E946D19C2 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F495B950570148A258A7D8 /* GameCenterManager.swift */; };
 		DFA54B8C747FFEF46FCED95C /* fish_slap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 307119121AC9644F9F74E758 /* fish_slap.m4a */; };
 		DFF5E240518ED72A048C3F4E /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD532AB5438E179856D84D /* PadView.swift */; };
 		E14DF776B4AFE97A70FABB85 /* fish_gaff.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DAE307A1830207E68A9250BE /* fish_gaff.m4a */; };
@@ -105,6 +108,7 @@
 		2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_waves_b.wav; sourceTree = "<group>"; };
 		240D14F500384CB874310746 /* CareerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViews.swift; sourceTree = "<group>"; };
 		26008E65A2704C216128EE1F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		26FEBDA90C45618BDD124651 /* GameCenterRulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterRulesTests.swift; sourceTree = "<group>"; };
 		307119121AC9644F9F74E758 /* fish_slap.m4a */ = {isa = PBXFileReference; path = fish_slap.m4a; sourceTree = "<group>"; };
 		3101A49C1CD49C0BDB3A499C /* fish_engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_engine.wav; sourceTree = "<group>"; };
 		36D223ED66852C17984514DD /* fish_thrash.m4a */ = {isa = PBXFileReference; path = fish_thrash.m4a; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		7AA8498C10546324E1D0169E /* ControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModels.swift; sourceTree = "<group>"; };
 		7F0143F9D23475F527F4F3B8 /* fish_clicker.m4a */ = {isa = PBXFileReference; path = fish_clicker.m4a; sourceTree = "<group>"; };
+		87F495B950570148A258A7D8 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		88542167A15AD68A28F647D6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		8983540B6580F15F4D7FC8BD /* AudioAssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAssetTests.swift; sourceTree = "<group>"; };
 		8E810E0DB291C3876062ED7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 		8F61CE9AB7093FF93FE7C6E4 /* fish_cast.m4a */ = {isa = PBXFileReference; path = fish_cast.m4a; sourceTree = "<group>"; };
 		9FCF488FD3F9B15807228B19 /* CareerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerTests.swift; sourceTree = "<group>"; };
 		A4A70F7E68FAD9E2074A6D20 /* FightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightView.swift; sourceTree = "<group>"; };
+		A5BABFAE3EC0399C9E7D6A23 /* DeepSeaFishing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepSeaFishing.entitlements; sourceTree = "<group>"; };
 		A94BD649023411565A17D774 /* GameModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModels.swift; sourceTree = "<group>"; };
 		AC741420AD65FAEBAE77DDE5 /* RemoteLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLink.swift; sourceTree = "<group>"; };
 		AD2D20AA02BC231BA5466CBB /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		CE8089E0ED27389711693D86 /* ControlScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlScheme.swift; sourceTree = "<group>"; };
 		CFDD532AB5438E179856D84D /* PadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
+		CFE549CC7A52EE562466FAFD /* DeepSeaFishingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepSeaFishingTV.entitlements; sourceTree = "<group>"; };
 		D4A5DEB63508C204E6EC834E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAE307A1830207E68A9250BE /* fish_gaff.m4a */ = {isa = PBXFileReference; path = fish_gaff.m4a; sourceTree = "<group>"; };
 		E18F961945ABFA3A257FC0AD /* ResultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViews.swift; sourceTree = "<group>"; };
@@ -185,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				07529122BDE434164CF6FA86 /* Assets.xcassets */,
+				CFE549CC7A52EE562466FAFD /* DeepSeaFishingTV.entitlements */,
 			);
 			path = DeepSeaFishingTV;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 				8983540B6580F15F4D7FC8BD /* AudioAssetTests.swift */,
 				9FCF488FD3F9B15807228B19 /* CareerTests.swift */,
 				36DFC53C6D7DCD53AB5FF2D1 /* ControlSchemeTests.swift */,
+				26FEBDA90C45618BDD124651 /* GameCenterRulesTests.swift */,
 				3FFFF6A5883E3923F076A237 /* RemoteLinkTests.swift */,
 				E679D6FD57403A3A76776061 /* SeededGenerator.swift */,
 				48A47C79615D317A5D47D5DE /* Simulation.swift */,
@@ -214,10 +223,12 @@
 				7AA8498C10546324E1D0169E /* ControllerManager.swift */,
 				CE8089E0ED27389711693D86 /* ControlScheme.swift */,
 				73D3649D79046B6C139287C2 /* ControlsView.swift */,
+				A5BABFAE3EC0399C9E7D6A23 /* DeepSeaFishing.entitlements */,
 				5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */,
 				7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */,
 				F0345F71EBF759999A583AB6 /* FightEngine.swift */,
 				A4A70F7E68FAD9E2074A6D20 /* FightView.swift */,
+				87F495B950570148A258A7D8 /* GameCenterManager.swift */,
 				A94BD649023411565A17D774 /* GameModels.swift */,
 				88542167A15AD68A28F647D6 /* GameViewModel.swift */,
 				5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */,
@@ -422,6 +433,7 @@
 				A6619B8DC7CE3AA4F5806550 /* EquipmentModels.swift in Sources */,
 				4D950BC96C6388333615F06A /* FightEngine.swift in Sources */,
 				3F503C46970E1F009F8F6416 /* FightView.swift in Sources */,
+				DA985B250E5A156E946D19C2 /* GameCenterManager.swift in Sources */,
 				AA541DF657C749281C62464F /* GameModels.swift in Sources */,
 				042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */,
 				35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */,
@@ -449,6 +461,7 @@
 				116396DD66A12EC071AF40C2 /* EquipmentModels.swift in Sources */,
 				3610AAC5AAF42F04423D4060 /* FightEngine.swift in Sources */,
 				C034D082A4C452A2772F2CE4 /* FightView.swift in Sources */,
+				855CD97AE8D9634EC7409E2B /* GameCenterManager.swift in Sources */,
 				BE5F91538CF1F5162DCB210E /* GameModels.swift in Sources */,
 				5AE7024274771DC060330EC3 /* GameViewModel.swift in Sources */,
 				79EC179DB11FA24E2B229FFB /* HapticsManager.swift in Sources */,
@@ -468,6 +481,7 @@
 				3054D4CEF3137BFDDCA9E193 /* AudioAssetTests.swift in Sources */,
 				7914300116AF8E35B7BED661 /* CareerTests.swift in Sources */,
 				A13007138692A67C94A0DB43 /* ControlSchemeTests.swift in Sources */,
+				BB674C2EE0DC45F175EC3FEB /* GameCenterRulesTests.swift in Sources */,
 				E9F8888FD1580FFE81B128E0 /* RemoteLinkTests.swift in Sources */,
 				BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */,
 				3562B35EEA56658126BF4F20 /* Simulation.swift in Sources */,
@@ -567,6 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = DeepSeaFishingTV/DeepSeaFishingTV.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N724Z4725Y;
@@ -652,6 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = DeepSeaFishingTV/DeepSeaFishingTV.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N724Z4725Y;
@@ -693,6 +709,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeepSeaFishing/DeepSeaFishing.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N724Z4725Y;
@@ -714,6 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DeepSeaFishing/DeepSeaFishing.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N724Z4725Y;

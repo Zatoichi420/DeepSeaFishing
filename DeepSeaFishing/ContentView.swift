@@ -107,6 +107,11 @@ struct HomeView: View {
                     .buttonStyle(.bordered)
                     .frame(minHeight: 44)
 
+                Button("Leaderboards and Achievements") { viewModel.gameCenter.showDashboard() }
+                    .buttonStyle(.bordered)
+                    .frame(minHeight: 44)
+                    .accessibilityHint(viewModel.gameCenter.isSignedIn ? "Opens Game Center." : "You're not signed in to Game Center.")
+
                 Button("Controls") { viewModel.showControls() }
                     .buttonStyle(.bordered)
                     .frame(minHeight: 44)
