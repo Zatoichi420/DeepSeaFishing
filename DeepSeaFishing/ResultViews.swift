@@ -10,13 +10,7 @@ struct ResultView: View {
         VStack(spacing: 20) {
             if let fish = viewModel.currentFish {
                 if landed {
-                    Image(fish.species.imageName)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 140)
-                        .frame(maxWidth: .infinity)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                        .accessibilityHidden(true)
+                    SpeciesBanner(species: fish.species)
 
                     Text("Landed!")
                         .font(.largeTitle)

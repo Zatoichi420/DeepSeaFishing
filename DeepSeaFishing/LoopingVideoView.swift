@@ -67,3 +67,23 @@ private struct LoopingPlayerView: UIViewRepresentable {
         uiView.playerLayer.player = nil
     }
 }
+
+/// Fight and result banner: the species' looping clip when it has one,
+/// otherwise its still picture.
+struct SpeciesBanner: View {
+    let species: FishSpecies
+
+    var body: some View {
+        if let video = species.videoName {
+            LoopingVideoBanner(resource: video, fallbackImage: species.imageName, height: 140)
+        } else {
+            Image(species.imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 140)
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .accessibilityHidden(true)
+        }
+    }
+}

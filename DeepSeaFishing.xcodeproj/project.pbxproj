@@ -75,6 +75,7 @@
 		CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
+		D3302508F0CE5C0D01EDF80B /* billfish_jump.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 777C559AC0A24EF073553A32 /* billfish_jump.mp4 */; };
 		D347089CA90B013F94F7B5D5 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */; };
 		DA77F64B626B2CA4A429E9CE /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
 		DA88168D17EE8A410F617456 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
@@ -93,6 +94,7 @@
 		F2A6557FF578F0D306F58ED1 /* RemoteLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC741420AD65FAEBAE77DDE5 /* RemoteLink.swift */; };
 		F2A8E9801D2DEC83B4EBD61A /* fish_rigging.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8F06CE8CF8EF938B2D74B1C5 /* fish_rigging.wav */; };
 		F496A7D70DC40311F1279C27 /* fish_drag.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73D897DD1683824BEB3DD90E /* fish_drag.wav */; };
+		F67A3D513D0AD82DD8EE829B /* billfish_jump.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 777C559AC0A24EF073553A32 /* billfish_jump.mp4 */; };
 		F9A253A68E1B685EAA34C44F /* fish_thrash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 36D223ED66852C17984514DD /* fish_thrash.m4a */; };
 		FBE559836154C2A02717E83D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E810E0DB291C3876062ED7B /* ContentView.swift */; };
 		FE7B99F99927876867500A83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E810E0DB291C3876062ED7B /* ContentView.swift */; };
@@ -134,6 +136,7 @@
 		6E55B06C4242674B9629674A /* fish_gulls.m4a */ = {isa = PBXFileReference; path = fish_gulls.m4a; sourceTree = "<group>"; };
 		73D3649D79046B6C139287C2 /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
 		73D897DD1683824BEB3DD90E /* fish_drag.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_drag.wav; sourceTree = "<group>"; };
+		777C559AC0A24EF073553A32 /* billfish_jump.mp4 */ = {isa = PBXFileReference; path = billfish_jump.mp4; sourceTree = "<group>"; };
 		7AA8498C10546324E1D0169E /* ControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentModels.swift; sourceTree = "<group>"; };
 		7F0143F9D23475F527F4F3B8 /* fish_clicker.m4a */ = {isa = PBXFileReference; path = fish_clicker.m4a; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 		088A70FF0DDA9181245EF07E /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				777C559AC0A24EF073553A32 /* billfish_jump.mp4 */,
 				D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */,
 				F6786E1B890E2851E91FED5B /* rod_wake.mp4 */,
 			);
@@ -393,6 +397,7 @@
 			files = (
 				742160E51231E955DE2818AE /* Assets.xcassets in Resources */,
 				12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */,
+				D3302508F0CE5C0D01EDF80B /* billfish_jump.mp4 in Resources */,
 				E2B5FD9B8B18D55ED65F21E0 /* fish_cast.m4a in Resources */,
 				A0C1920C8B4DB990357CC593 /* fish_clicker.m4a in Resources */,
 				3F9C089A8A98AFDEDA6BB0F6 /* fish_creak.m4a in Resources */,
@@ -419,6 +424,7 @@
 			files = (
 				1F2F89A34F10C1B82DF07D79 /* Assets.xcassets in Resources */,
 				7819D93C4DE45D77028423A4 /* Assets.xcassets in Resources */,
+				F67A3D513D0AD82DD8EE829B /* billfish_jump.mp4 in Resources */,
 				AEA980CC331F11983DD676AD /* fish_cast.m4a in Resources */,
 				23546A2D1FA7D846C5485FDA /* fish_clicker.m4a in Resources */,
 				86D173DF787DC7228565571E /* fish_creak.m4a in Resources */,

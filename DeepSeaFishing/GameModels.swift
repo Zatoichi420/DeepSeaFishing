@@ -135,6 +135,14 @@ enum FishSpecies: String, CaseIterable, Codable {
         }
     }
 
+    /// Bundled looping clip for this species, if one exists (see Videos/).
+    var videoName: String? {
+        switch self {
+        case .marlin, .sailfish, .swordfish: return "billfish_jump"
+        default: return nil
+        }
+    }
+
     /// Billfish are tagged and released, as real sportfishing crews do. They
     /// earn a flat release fee instead of a price by the pound.
     var isCatchAndRelease: Bool { self == .marlin || self == .sailfish }
