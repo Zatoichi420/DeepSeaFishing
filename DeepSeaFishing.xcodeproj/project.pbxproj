@@ -19,19 +19,24 @@
 		23546A2D1FA7D846C5485FDA /* fish_clicker.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 7F0143F9D23475F527F4F3B8 /* fish_clicker.m4a */; };
 		23DCA316255851577E52413F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26008E65A2704C216128EE1F /* OnboardingView.swift */; };
 		287871314CBE9F7496847744 /* fish_gulls.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6E55B06C4242674B9629674A /* fish_gulls.m4a */; };
+		28E4AF9478F247BADF1BA54B /* home_sunrise.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */; };
 		297D8A59F6F9268C33D9D08E /* CareerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D14F500384CB874310746 /* CareerViews.swift */; };
 		3054D4CEF3137BFDDCA9E193 /* AudioAssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983540B6580F15F4D7FC8BD /* AudioAssetTests.swift */; };
 		3562B35EEA56658126BF4F20 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A47C79615D317A5D47D5DE /* Simulation.swift */; };
 		35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
 		3610AAC5AAF42F04423D4060 /* FightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0345F71EBF759999A583AB6 /* FightEngine.swift */; };
+		396230E6A9A04728FAD5FB4D /* rod_wake.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F6786E1B890E2851E91FED5B /* rod_wake.mp4 */; };
 		3A47E988AF4AFEF85528D965 /* fish_tailwalk.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6C762A0DF08EBAF64C764F86 /* fish_tailwalk.m4a */; };
 		3E2A1F37176724B1EE0A48FB /* ResultViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F961945ABFA3A257FC0AD /* ResultViews.swift */; };
 		3EAE59E919F80BAE977DA5DB /* ControlScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8089E0ED27389711693D86 /* ControlScheme.swift */; };
 		3F503C46970E1F009F8F6416 /* FightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70F7E68FAD9E2074A6D20 /* FightView.swift */; };
 		3F9C089A8A98AFDEDA6BB0F6 /* fish_creak.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B80BA13DB3D02CFE54BECF94 /* fish_creak.m4a */; };
+		4C8F486BC330B0CF52553662 /* rod_wake.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F6786E1B890E2851E91FED5B /* rod_wake.mp4 */; };
 		4D950BC96C6388333615F06A /* FightEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0345F71EBF759999A583AB6 /* FightEngine.swift */; };
+		54112DEEEB52D4A4D248ACFE /* home_sunrise.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */; };
 		580883C602E66816AE711B7C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */; };
 		584C12167B0F12D65DDFD1C1 /* fish_waves_a.wav in Resources */ = {isa = PBXBuildFile; fileRef = F1B0E11342A9AD84FFC9B101 /* fish_waves_a.wav */; };
+		595ECA8DD2E05590A1CD73F8 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */; };
 		59884CA50E557D361F4AE514 /* CareerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D14F500384CB874310746 /* CareerViews.swift */; };
 		5AE7024274771DC060330EC3 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88542167A15AD68A28F647D6 /* GameViewModel.swift */; };
 		5BDD8CF2C76DBE8C3D5625D5 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
@@ -70,6 +75,7 @@
 		CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
+		D347089CA90B013F94F7B5D5 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */; };
 		DA77F64B626B2CA4A429E9CE /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
 		DA88168D17EE8A410F617456 /* DeepSeaFishingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5559947F52510E3B9EB1692C /* DeepSeaFishingApp.swift */; };
 		DA985B250E5A156E946D19C2 /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F495B950570148A258A7D8 /* GameCenterManager.swift */; };
@@ -134,6 +140,7 @@
 		87F495B950570148A258A7D8 /* GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterManager.swift; sourceTree = "<group>"; };
 		88542167A15AD68A28F647D6 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		8983540B6580F15F4D7FC8BD /* AudioAssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAssetTests.swift; sourceTree = "<group>"; };
+		8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingVideoView.swift; sourceTree = "<group>"; };
 		8E810E0DB291C3876062ED7B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8F06CE8CF8EF938B2D74B1C5 /* fish_rigging.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_rigging.wav; sourceTree = "<group>"; };
 		8F61CE9AB7093FF93FE7C6E4 /* fish_cast.m4a */ = {isa = PBXFileReference; path = fish_cast.m4a; sourceTree = "<group>"; };
@@ -150,14 +157,25 @@
 		CFDD532AB5438E179856D84D /* PadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
 		CFE549CC7A52EE562466FAFD /* DeepSeaFishingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepSeaFishingTV.entitlements; sourceTree = "<group>"; };
 		D4A5DEB63508C204E6EC834E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */ = {isa = PBXFileReference; path = home_sunrise.mp4; sourceTree = "<group>"; };
 		DAE307A1830207E68A9250BE /* fish_gaff.m4a */ = {isa = PBXFileReference; path = fish_gaff.m4a; sourceTree = "<group>"; };
 		E18F961945ABFA3A257FC0AD /* ResultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViews.swift; sourceTree = "<group>"; };
 		E679D6FD57403A3A76776061 /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
 		F0345F71EBF759999A583AB6 /* FightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightEngine.swift; sourceTree = "<group>"; };
 		F1B0E11342A9AD84FFC9B101 /* fish_waves_a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_waves_a.wav; sourceTree = "<group>"; };
+		F6786E1B890E2851E91FED5B /* rod_wake.mp4 */ = {isa = PBXFileReference; path = rod_wake.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		088A70FF0DDA9181245EF07E /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */,
+				F6786E1B890E2851E91FED5B /* rod_wake.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		159CFE0C2D8A1988D999CFCD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				D5C76D627018B8E700F88027 /* Sounds */,
+				088A70FF0DDA9181245EF07E /* Videos */,
 				0CF1DB6943235ECD7717B465 /* Assets.xcassets */,
 				BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */,
 				37B14606CE77139EA82A56F3 /* Career.swift */,
@@ -233,6 +252,7 @@
 				88542167A15AD68A28F647D6 /* GameViewModel.swift */,
 				5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */,
 				D4A5DEB63508C204E6EC834E /* Info.plist */,
+				8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */,
 				AD2D20AA02BC231BA5466CBB /* MotionManager.swift */,
 				26008E65A2704C216128EE1F /* OnboardingView.swift */,
 				CFDD532AB5438E179856D84D /* PadView.swift */,
@@ -388,6 +408,8 @@
 				F9A253A68E1B685EAA34C44F /* fish_thrash.m4a in Resources */,
 				584C12167B0F12D65DDFD1C1 /* fish_waves_a.wav in Resources */,
 				ECBA4C45A9634DB35697B72C /* fish_waves_b.wav in Resources */,
+				54112DEEEB52D4A4D248ACFE /* home_sunrise.mp4 in Resources */,
+				396230E6A9A04728FAD5FB4D /* rod_wake.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +434,8 @@
 				E3A066A48793D556A97A29C2 /* fish_thrash.m4a in Resources */,
 				5CC8F65C8CADCD7B29388F14 /* fish_waves_a.wav in Resources */,
 				CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */,
+				28E4AF9478F247BADF1BA54B /* home_sunrise.mp4 in Resources */,
+				4C8F486BC330B0CF52553662 /* rod_wake.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +461,7 @@
 				AA541DF657C749281C62464F /* GameModels.swift in Sources */,
 				042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */,
 				35BDEA9B1644581652B945CF /* HapticsManager.swift in Sources */,
+				D347089CA90B013F94F7B5D5 /* LoopingVideoView.swift in Sources */,
 				BCC276EA34D100485ADECB36 /* MotionManager.swift in Sources */,
 				23DCA316255851577E52413F /* OnboardingView.swift in Sources */,
 				1C49CF8A2628E0D632C19C09 /* PadView.swift in Sources */,
@@ -465,6 +490,7 @@
 				BE5F91538CF1F5162DCB210E /* GameModels.swift in Sources */,
 				5AE7024274771DC060330EC3 /* GameViewModel.swift in Sources */,
 				79EC179DB11FA24E2B229FFB /* HapticsManager.swift in Sources */,
+				595ECA8DD2E05590A1CD73F8 /* LoopingVideoView.swift in Sources */,
 				08AFF5B1816B5D9A34E1CDF6 /* MotionManager.swift in Sources */,
 				8AB119EB44ABD41E33BE400A /* OnboardingView.swift in Sources */,
 				DFF5E240518ED72A048C3F4E /* PadView.swift in Sources */,

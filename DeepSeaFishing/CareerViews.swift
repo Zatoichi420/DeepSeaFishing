@@ -163,6 +163,7 @@ struct AtSeaView: View {
     var body: some View {
         VStack(spacing: 16) {
             if let trip = viewModel.career?.trip {
+                LoopingVideoBanner(resource: "rod_wake", fallbackImage: "OceanWaveImage", height: 140)
                 ScreenTitle(text: "At \(trip.ground.title)")
                 VStack(spacing: 6) {
                     Text("\(trip.castsLeft) cast\(trip.castsLeft == 1 ? "" : "s") left.")

@@ -61,13 +61,7 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Image("OceanWaveImage")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 160)
-                    .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .accessibilityHidden(true)
+                LoopingVideoBanner(resource: "home_sunrise", fallbackImage: "OceanWaveImage", height: 200)
 
                 Text("Deep Sea Fishing")
                     .font(.largeTitle)
@@ -135,13 +129,7 @@ struct IdleView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Image("OceanWaveImage")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 160)
-                .frame(maxWidth: .infinity)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .accessibilityHidden(true)
+            LoopingVideoBanner(resource: "rod_wake", fallbackImage: "OceanWaveImage")
 
             Text("Quick Run")
                 .font(.largeTitle)
