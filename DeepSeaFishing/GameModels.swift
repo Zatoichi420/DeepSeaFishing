@@ -139,6 +139,7 @@ enum FishSpecies: String, CaseIterable, Codable {
     var videoName: String? {
         switch self {
         case .marlin, .sailfish, .swordfish: return "billfish_jump"
+        case .tuna, .yellowfin, .wahoo: return "tuna_school"
         default: return nil
         }
     }

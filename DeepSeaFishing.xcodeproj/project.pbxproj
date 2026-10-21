@@ -12,6 +12,7 @@
 		08AFF5B1816B5D9A34E1CDF6 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D20AA02BC231BA5466CBB /* MotionManager.swift */; };
 		116396DD66A12EC071AF40C2 /* EquipmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */; };
 		12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */; };
+		1ACA1CAC9C37B468F8CDE29C /* tuna_school.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */; };
 		1C49CF8A2628E0D632C19C09 /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD532AB5438E179856D84D /* PadView.swift */; };
 		1F2F89A34F10C1B82DF07D79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF1DB6943235ECD7717B465 /* Assets.xcassets */; };
 		1FC74631F997FE1277FB81D4 /* ResultViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18F961945ABFA3A257FC0AD /* ResultViews.swift */; };
@@ -48,6 +49,7 @@
 		7847807FDA118ED3DB189D4B /* ControlScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8089E0ED27389711693D86 /* ControlScheme.swift */; };
 		7914300116AF8E35B7BED661 /* CareerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF488FD3F9B15807228B19 /* CareerTests.swift */; };
 		79EC179DB11FA24E2B229FFB /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
+		7DF1D9FE112B335276CBCBA6 /* tuna_school.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */; };
 		7E5D4919FC142643E514544C /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
 		81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 307119121AC9644F9F74E758 /* fish_slap.m4a */; };
 		855CD97AE8D9634EC7409E2B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F495B950570148A258A7D8 /* GameCenterManager.swift */; };
@@ -113,6 +115,7 @@
 /* Begin PBXFileReference section */
 		07529122BDE434164CF6FA86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF1DB6943235ECD7717B465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */ = {isa = PBXFileReference; path = tuna_school.mp4; sourceTree = "<group>"; };
 		2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_waves_b.wav; sourceTree = "<group>"; };
 		240D14F500384CB874310746 /* CareerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViews.swift; sourceTree = "<group>"; };
 		26008E65A2704C216128EE1F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 				777C559AC0A24EF073553A32 /* billfish_jump.mp4 */,
 				D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */,
 				F6786E1B890E2851E91FED5B /* rod_wake.mp4 */,
+				134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -415,6 +419,7 @@
 				ECBA4C45A9634DB35697B72C /* fish_waves_b.wav in Resources */,
 				54112DEEEB52D4A4D248ACFE /* home_sunrise.mp4 in Resources */,
 				396230E6A9A04728FAD5FB4D /* rod_wake.mp4 in Resources */,
+				1ACA1CAC9C37B468F8CDE29C /* tuna_school.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +447,7 @@
 				CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */,
 				28E4AF9478F247BADF1BA54B /* home_sunrise.mp4 in Resources */,
 				4C8F486BC330B0CF52553662 /* rod_wake.mp4 in Resources */,
+				7DF1D9FE112B335276CBCBA6 /* tuna_school.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
