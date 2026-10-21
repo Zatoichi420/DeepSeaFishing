@@ -49,6 +49,7 @@
 		7847807FDA118ED3DB189D4B /* ControlScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8089E0ED27389711693D86 /* ControlScheme.swift */; };
 		7914300116AF8E35B7BED661 /* CareerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF488FD3F9B15807228B19 /* CareerTests.swift */; };
 		79EC179DB11FA24E2B229FFB /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFBB5A90A181A6F1F238EC6 /* HapticsManager.swift */; };
+		7BE68B2BFA086D9C3AFD4D2C /* fish_splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 27AE747102560A9DCB6E1408 /* fish_splash.mp4 */; };
 		7DF1D9FE112B335276CBCBA6 /* tuna_school.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */; };
 		7E5D4919FC142643E514544C /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
 		81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 307119121AC9644F9F74E758 /* fish_slap.m4a */; };
@@ -77,6 +78,7 @@
 		CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
+		D2BF3040135C9D7078FC928A /* fish_splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 27AE747102560A9DCB6E1408 /* fish_splash.mp4 */; };
 		D3302508F0CE5C0D01EDF80B /* billfish_jump.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 777C559AC0A24EF073553A32 /* billfish_jump.mp4 */; };
 		D347089CA90B013F94F7B5D5 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */; };
 		DA77F64B626B2CA4A429E9CE /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
@@ -120,6 +122,7 @@
 		240D14F500384CB874310746 /* CareerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerViews.swift; sourceTree = "<group>"; };
 		26008E65A2704C216128EE1F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		26FEBDA90C45618BDD124651 /* GameCenterRulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterRulesTests.swift; sourceTree = "<group>"; };
+		27AE747102560A9DCB6E1408 /* fish_splash.mp4 */ = {isa = PBXFileReference; path = fish_splash.mp4; sourceTree = "<group>"; };
 		307119121AC9644F9F74E758 /* fish_slap.m4a */ = {isa = PBXFileReference; path = fish_slap.m4a; sourceTree = "<group>"; };
 		3101A49C1CD49C0BDB3A499C /* fish_engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_engine.wav; sourceTree = "<group>"; };
 		36D223ED66852C17984514DD /* fish_thrash.m4a */ = {isa = PBXFileReference; path = fish_thrash.m4a; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				777C559AC0A24EF073553A32 /* billfish_jump.mp4 */,
+				27AE747102560A9DCB6E1408 /* fish_splash.mp4 */,
 				D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */,
 				F6786E1B890E2851E91FED5B /* rod_wake.mp4 */,
 				134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */,
@@ -413,6 +417,7 @@
 				F2A8E9801D2DEC83B4EBD61A /* fish_rigging.wav in Resources */,
 				81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */,
 				B11A05D9CEA3DFC9C6718B99 /* fish_snap.m4a in Resources */,
+				D2BF3040135C9D7078FC928A /* fish_splash.mp4 in Resources */,
 				3A47E988AF4AFEF85528D965 /* fish_tailwalk.m4a in Resources */,
 				F9A253A68E1B685EAA34C44F /* fish_thrash.m4a in Resources */,
 				584C12167B0F12D65DDFD1C1 /* fish_waves_a.wav in Resources */,
@@ -441,6 +446,7 @@
 				86F40337E11BEDE8F95381EA /* fish_rigging.wav in Resources */,
 				DFA54B8C747FFEF46FCED95C /* fish_slap.m4a in Resources */,
 				8E2E142B53287B6AAFFF3364 /* fish_snap.m4a in Resources */,
+				7BE68B2BFA086D9C3AFD4D2C /* fish_splash.mp4 in Resources */,
 				ED184F4EFD8F8380D23E6AEF /* fish_tailwalk.m4a in Resources */,
 				E3A066A48793D556A97A29C2 /* fish_thrash.m4a in Resources */,
 				5CC8F65C8CADCD7B29388F14 /* fish_waves_a.wav in Resources */,

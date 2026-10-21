@@ -140,6 +140,7 @@ enum FishSpecies: String, CaseIterable, Codable {
         switch self {
         case .marlin, .sailfish, .swordfish: return "billfish_jump"
         case .tuna, .yellowfin, .wahoo: return "tuna_school"
+        case .mahiMahi, .mako: return "fish_splash"
         default: return nil
         }
     }
