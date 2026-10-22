@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		00962F0F513360881E62F118 /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		042D4F0356EFE2186337604C /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88542167A15AD68A28F647D6 /* GameViewModel.swift */; };
+		04D544B5FEED9AEBD1726C80 /* fish_landed.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BFFBC3EBCEE38E7E0D930FFB /* fish_landed.mp4 */; };
 		08AFF5B1816B5D9A34E1CDF6 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D20AA02BC231BA5466CBB /* MotionManager.swift */; };
 		116396DD66A12EC071AF40C2 /* EquipmentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AE0B9EE36DA51921D8A4F /* EquipmentModels.swift */; };
 		12AB118382246C0F470F5988 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ADBED783F3996A8F8BCADA /* Preview Assets.xcassets */; };
+		1828BA5D78E7F4838A48A38B /* fish_landed.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BFFBC3EBCEE38E7E0D930FFB /* fish_landed.mp4 */; };
 		1ACA1CAC9C37B468F8CDE29C /* tuna_school.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */; };
 		1C49CF8A2628E0D632C19C09 /* PadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD532AB5438E179856D84D /* PadView.swift */; };
 		1F2F89A34F10C1B82DF07D79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CF1DB6943235ECD7717B465 /* Assets.xcassets */; };
@@ -75,6 +77,7 @@
 		BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E679D6FD57403A3A76776061 /* SeededGenerator.swift */; };
 		BE5F91538CF1F5162DCB210E /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94BD649023411565A17D774 /* GameModels.swift */; };
 		C034D082A4C452A2772F2CE4 /* FightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A70F7E68FAD9E2074A6D20 /* FightView.swift */; };
+		C22D0D5FD9B66C4FD7F2ED59 /* line_snapped.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F025694330C13502CEBE31AB /* line_snapped.mp4 */; };
 		CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
@@ -90,6 +93,7 @@
 		E2B5FD9B8B18D55ED65F21E0 /* fish_cast.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8F61CE9AB7093FF93FE7C6E4 /* fish_cast.m4a */; };
 		E3A066A48793D556A97A29C2 /* fish_thrash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 36D223ED66852C17984514DD /* fish_thrash.m4a */; };
 		E46C9E9B420A7A8BC700AF28 /* fish_jump.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46092412C21F7D188BD3D3E9 /* fish_jump.m4a */; };
+		E5E3876667F1D7363F24BB44 /* line_snapped.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F025694330C13502CEBE31AB /* line_snapped.mp4 */; };
 		E78BA8635A1AADCC17369D26 /* fish_jump.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 46092412C21F7D188BD3D3E9 /* fish_jump.m4a */; };
 		E9F8888FD1580FFE81B128E0 /* RemoteLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFF6A5883E3923F076A237 /* RemoteLinkTests.swift */; };
 		ECBA4C45A9634DB35697B72C /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
@@ -162,6 +166,7 @@
 		AD2EBEB7BB6BA92EB7C8E322 /* DeepSeaFishingTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DeepSeaFishingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80BA13DB3D02CFE54BECF94 /* fish_creak.m4a */ = {isa = PBXFileReference; path = fish_creak.m4a; sourceTree = "<group>"; };
 		BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		BFFBC3EBCEE38E7E0D930FFB /* fish_landed.mp4 */ = {isa = PBXFileReference; path = fish_landed.mp4; sourceTree = "<group>"; };
 		CE8089E0ED27389711693D86 /* ControlScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlScheme.swift; sourceTree = "<group>"; };
 		CFDD532AB5438E179856D84D /* PadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
 		CFE549CC7A52EE562466FAFD /* DeepSeaFishingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepSeaFishingTV.entitlements; sourceTree = "<group>"; };
@@ -170,6 +175,7 @@
 		DAE307A1830207E68A9250BE /* fish_gaff.m4a */ = {isa = PBXFileReference; path = fish_gaff.m4a; sourceTree = "<group>"; };
 		E18F961945ABFA3A257FC0AD /* ResultViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViews.swift; sourceTree = "<group>"; };
 		E679D6FD57403A3A76776061 /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
+		F025694330C13502CEBE31AB /* line_snapped.mp4 */ = {isa = PBXFileReference; path = line_snapped.mp4; sourceTree = "<group>"; };
 		F0345F71EBF759999A583AB6 /* FightEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightEngine.swift; sourceTree = "<group>"; };
 		F1B0E11342A9AD84FFC9B101 /* fish_waves_a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fish_waves_a.wav; sourceTree = "<group>"; };
 		F6786E1B890E2851E91FED5B /* rod_wake.mp4 */ = {isa = PBXFileReference; path = rod_wake.mp4; sourceTree = "<group>"; };
@@ -180,8 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				777C559AC0A24EF073553A32 /* billfish_jump.mp4 */,
+				BFFBC3EBCEE38E7E0D930FFB /* fish_landed.mp4 */,
 				27AE747102560A9DCB6E1408 /* fish_splash.mp4 */,
 				D7BB7CA5478FA023B98E6B53 /* home_sunrise.mp4 */,
+				F025694330C13502CEBE31AB /* line_snapped.mp4 */,
 				F6786E1B890E2851E91FED5B /* rod_wake.mp4 */,
 				134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */,
 			);
@@ -414,6 +422,7 @@
 				2222ABD7BFC38C21E3D2A636 /* fish_gaff.m4a in Resources */,
 				96E217CFDE24AE788D990B20 /* fish_gulls.m4a in Resources */,
 				E78BA8635A1AADCC17369D26 /* fish_jump.m4a in Resources */,
+				1828BA5D78E7F4838A48A38B /* fish_landed.mp4 in Resources */,
 				F2A8E9801D2DEC83B4EBD61A /* fish_rigging.wav in Resources */,
 				81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */,
 				B11A05D9CEA3DFC9C6718B99 /* fish_snap.m4a in Resources */,
@@ -423,6 +432,7 @@
 				584C12167B0F12D65DDFD1C1 /* fish_waves_a.wav in Resources */,
 				ECBA4C45A9634DB35697B72C /* fish_waves_b.wav in Resources */,
 				54112DEEEB52D4A4D248ACFE /* home_sunrise.mp4 in Resources */,
+				C22D0D5FD9B66C4FD7F2ED59 /* line_snapped.mp4 in Resources */,
 				396230E6A9A04728FAD5FB4D /* rod_wake.mp4 in Resources */,
 				1ACA1CAC9C37B468F8CDE29C /* tuna_school.mp4 in Resources */,
 			);
@@ -443,6 +453,7 @@
 				E14DF776B4AFE97A70FABB85 /* fish_gaff.m4a in Resources */,
 				287871314CBE9F7496847744 /* fish_gulls.m4a in Resources */,
 				E46C9E9B420A7A8BC700AF28 /* fish_jump.m4a in Resources */,
+				04D544B5FEED9AEBD1726C80 /* fish_landed.mp4 in Resources */,
 				86F40337E11BEDE8F95381EA /* fish_rigging.wav in Resources */,
 				DFA54B8C747FFEF46FCED95C /* fish_slap.m4a in Resources */,
 				8E2E142B53287B6AAFFF3364 /* fish_snap.m4a in Resources */,
@@ -452,6 +463,7 @@
 				5CC8F65C8CADCD7B29388F14 /* fish_waves_a.wav in Resources */,
 				CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */,
 				28E4AF9478F247BADF1BA54B /* home_sunrise.mp4 in Resources */,
+				E5E3876667F1D7363F24BB44 /* line_snapped.mp4 in Resources */,
 				4C8F486BC330B0CF52553662 /* rod_wake.mp4 in Resources */,
 				7DF1D9FE112B335276CBCBA6 /* tuna_school.mp4 in Resources */,
 			);

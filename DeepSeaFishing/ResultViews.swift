@@ -10,7 +10,12 @@ struct ResultView: View {
         VStack(spacing: 20) {
             if let fish = viewModel.currentFish {
                 if landed {
-                    SpeciesBanner(species: fish.species)
+                    // Billfish are released, not hauled aboard, so they keep their own clip.
+                    if fish.species.isCatchAndRelease {
+                        SpeciesBanner(species: fish.species)
+                    } else {
+                        LoopingVideoBanner(resource: "fish_landed", fallbackImage: fish.species.imageName, height: 140)
+                    }
 
                     Text("Landed!")
                         .font(.largeTitle)
@@ -19,6 +24,8 @@ struct ResultView: View {
                     Text("\(fish.weightDescription) \(fish.legendName ?? fish.species.displayName)")
                         .font(.title2)
                 } else {
+                    LoopingVideoBanner(resource: "line_snapped", fallbackImage: "OceanWaveImage", height: 140)
+
                     Text("It got away")
                         .font(.largeTitle)
                         .bold()
