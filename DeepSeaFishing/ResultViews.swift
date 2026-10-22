@@ -11,7 +11,9 @@ struct ResultView: View {
             if let fish = viewModel.currentFish {
                 if landed {
                     // Billfish are released, not hauled aboard, so they keep their own clip.
-                    if fish.species.isCatchAndRelease {
+                    if fish.legendName != nil {
+                        LoopingVideoBanner(resource: "legend_fin", fallbackImage: fish.species.imageName, height: 140)
+                    } else if fish.species.isCatchAndRelease {
                         SpeciesBanner(species: fish.species)
                     } else {
                         LoopingVideoBanner(resource: "fish_landed", fallbackImage: fish.species.imageName, height: 140)

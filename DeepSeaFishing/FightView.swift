@@ -8,7 +8,7 @@ struct FightView: View {
     var body: some View {
         VStack(spacing: 20) {
             if let fish = viewModel.currentFish {
-                SpeciesBanner(species: fish.species)
+                FightBanner(fish: fish)
 
                 Text(fish.legendName.map { "Fighting \($0)" } ?? "Fighting a \(fish.species.displayName)")
                     .font(.title2)

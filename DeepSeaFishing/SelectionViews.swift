@@ -71,13 +71,7 @@ struct GearSelectionView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Image(species.imageName)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 120)
-                    .frame(maxWidth: .infinity)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .accessibilityHidden(true)
+                SpeciesBanner(species: species, height: 120)
 
                 Text("Gearing up for \(species.displayName)")
                     .font(.title2)

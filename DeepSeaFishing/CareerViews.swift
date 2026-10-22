@@ -66,6 +66,7 @@ struct DockView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
+                LoopingVideoBanner(resource: "dock", fallbackImage: "OceanWaveImage", height: 140)
                 ScreenTitle(text: "Port Salvage")
                 if let career = viewModel.career {
                     VStack(spacing: 6) {
@@ -125,6 +126,7 @@ struct GroundSelectView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
+                LoopingVideoBanner(resource: "dock", fallbackImage: "OceanWaveImage", height: 140)
                 ScreenTitle(text: "Where to?")
                 if let career = viewModel.career {
                     ForEach(FishingGround.allCases, id: \.self) { ground in
@@ -210,6 +212,7 @@ struct ShopView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
+                LoopingVideoBanner(resource: "dock", fallbackImage: "OceanWaveImage", height: 140)
                 ScreenTitle(text: "Tackle Shop")
                     .frame(maxWidth: .infinity)
                 if let career = viewModel.career {

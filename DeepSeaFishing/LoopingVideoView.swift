@@ -72,18 +72,32 @@ private struct LoopingPlayerView: UIViewRepresentable {
 /// otherwise its still picture.
 struct SpeciesBanner: View {
     let species: FishSpecies
+    var height: CGFloat = 140
 
     var body: some View {
         if let video = species.videoName {
-            LoopingVideoBanner(resource: video, fallbackImage: species.imageName, height: 140)
+            LoopingVideoBanner(resource: video, fallbackImage: species.imageName, height: height)
         } else {
             Image(species.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 140)
+                .frame(height: height)
                 .frame(maxWidth: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .accessibilityHidden(true)
+        }
+    }
+}
+
+/// Fight banner: a legend gets its own storm clip, everyone else the line run.
+struct FightBanner: View {
+    let fish: Fish
+
+    var body: some View {
+        if fish.legendName != nil {
+            LoopingVideoBanner(resource: "legend_fin", fallbackImage: fish.species.imageName, height: 140)
+        } else {
+            LoopingVideoBanner(resource: "line_run", fallbackImage: fish.species.imageName, height: 140)
         }
     }
 }
