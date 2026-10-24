@@ -58,6 +58,7 @@
 		7BE68B2BFA086D9C3AFD4D2C /* fish_splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 27AE747102560A9DCB6E1408 /* fish_splash.mp4 */; };
 		7DF1D9FE112B335276CBCBA6 /* tuna_school.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 134BD7B6FCF164C735EC2CD2 /* tuna_school.mp4 */; };
 		7E5D4919FC142643E514544C /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
+		7FCD178639660EC74B0CFF1D /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B4BD065ACD5C964A8C127 /* Weather.swift */; };
 		81BD268308626F3FB2E353FC /* fish_slap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 307119121AC9644F9F74E758 /* fish_slap.m4a */; };
 		855CD97AE8D9634EC7409E2B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F495B950570148A258A7D8 /* GameCenterManager.swift */; };
 		86D173DF787DC7228565571E /* fish_creak.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B80BA13DB3D02CFE54BECF94 /* fish_creak.m4a */; };
@@ -74,6 +75,7 @@
 		A6E789C4F3B34EE009938EC3 /* dock.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 18FAEA970817AA0F6AA48D72 /* dock.mp4 */; };
 		AA541DF657C749281C62464F /* GameModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94BD649023411565A17D774 /* GameModels.swift */; };
 		AE7CEB93CBFA1B8D9F0108D2 /* line_run.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 03B0E883F62008AFBE1CD596 /* line_run.mp4 */; };
+		AE803F995B7864285960717C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B4BD065ACD5C964A8C127 /* Weather.swift */; };
 		AEA980CC331F11983DD676AD /* fish_cast.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8F61CE9AB7093FF93FE7C6E4 /* fish_cast.m4a */; };
 		B11A05D9CEA3DFC9C6718B99 /* fish_snap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6198872554EF09C2AE90792B /* fish_snap.m4a */; };
 		B2E6938C9AEA087760A4FAD4 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D3649D79046B6C139287C2 /* ControlsView.swift */; };
@@ -87,6 +89,7 @@
 		CEEC4909A6A53B6DB8270249 /* fish_waves_b.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2076A150D01F0D58A72F02A7 /* fish_waves_b.wav */; };
 		CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4803096F259D6E037287426C /* SelectionViews.swift */; };
 		CF1871C7A9F5373B4F826B71 /* fish_engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3101A49C1CD49C0BDB3A499C /* fish_engine.wav */; };
+		CFF3E8050AB74B895884F32B /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DF9A14BC028A7FF8E5D686 /* WeatherTests.swift */; };
 		D2BF3040135C9D7078FC928A /* fish_splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 27AE747102560A9DCB6E1408 /* fish_splash.mp4 */; };
 		D3302508F0CE5C0D01EDF80B /* billfish_jump.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 777C559AC0A24EF073553A32 /* billfish_jump.mp4 */; };
 		D347089CA90B013F94F7B5D5 /* LoopingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17F7EC4BF7918FF4CA03A4 /* LoopingVideoView.swift */; };
@@ -125,6 +128,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00DF9A14BC028A7FF8E5D686 /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		03B0E883F62008AFBE1CD596 /* line_run.mp4 */ = {isa = PBXFileReference; path = line_run.mp4; sourceTree = "<group>"; };
 		07529122BDE434164CF6FA86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CF1DB6943235ECD7717B465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		B80BA13DB3D02CFE54BECF94 /* fish_creak.m4a */ = {isa = PBXFileReference; path = fish_creak.m4a; sourceTree = "<group>"; };
 		BE8ACA83100B77B6DFAA4829 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BFFBC3EBCEE38E7E0D930FFB /* fish_landed.mp4 */ = {isa = PBXFileReference; path = fish_landed.mp4; sourceTree = "<group>"; };
+		C64B4BD065ACD5C964A8C127 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CE8089E0ED27389711693D86 /* ControlScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlScheme.swift; sourceTree = "<group>"; };
 		CFDD532AB5438E179856D84D /* PadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadView.swift; sourceTree = "<group>"; };
 		CFE549CC7A52EE562466FAFD /* DeepSeaFishingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepSeaFishingTV.entitlements; sourceTree = "<group>"; };
@@ -257,6 +262,7 @@
 				3FFFF6A5883E3923F076A237 /* RemoteLinkTests.swift */,
 				E679D6FD57403A3A76776061 /* SeededGenerator.swift */,
 				48A47C79615D317A5D47D5DE /* Simulation.swift */,
+				00DF9A14BC028A7FF8E5D686 /* WeatherTests.swift */,
 			);
 			path = DeepSeaFishingTests;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				AC741420AD65FAEBAE77DDE5 /* RemoteLink.swift */,
 				E18F961945ABFA3A257FC0AD /* ResultViews.swift */,
 				4803096F259D6E037287426C /* SelectionViews.swift */,
+				C64B4BD065ACD5C964A8C127 /* Weather.swift */,
 			);
 			path = DeepSeaFishing;
 			sourceTree = "<group>";
@@ -516,6 +523,7 @@
 				F2A6557FF578F0D306F58ED1 /* RemoteLink.swift in Sources */,
 				3E2A1F37176724B1EE0A48FB /* ResultViews.swift in Sources */,
 				CF0452F31F5AD70B4F623F7C /* SelectionViews.swift in Sources */,
+				7FCD178639660EC74B0CFF1D /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +553,7 @@
 				EE4308DBBE51F0A13F435A77 /* RemoteLink.swift in Sources */,
 				1FC74631F997FE1277FB81D4 /* ResultViews.swift in Sources */,
 				00962F0F513360881E62F118 /* SelectionViews.swift in Sources */,
+				AE803F995B7864285960717C /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +568,7 @@
 				E9F8888FD1580FFE81B128E0 /* RemoteLinkTests.swift in Sources */,
 				BD9BE4E86CF53B921780E081 /* SeededGenerator.swift in Sources */,
 				3562B35EEA56658126BF4F20 /* Simulation.swift in Sources */,
+				CFF3E8050AB74B895884F32B /* WeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -140,6 +140,9 @@ struct GroundSelectView: View {
                                     .font(.subheadline)
                                 Text(unlocked ? "Fuel \(ground.fuelCost) dollars. Fish: \(ground.species.map(\.displayName).joined(separator: ", "))." : "")
                                     .font(.caption)
+                                if unlocked {
+                                    Text("Forecast: \(career.weather(at: ground).report)").font(.caption)
+                                }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -168,7 +171,7 @@ struct AtSeaView: View {
                 LoopingVideoBanner(resource: "rod_wake", fallbackImage: "OceanWaveImage", height: 140)
                 ScreenTitle(text: "At \(trip.ground.title)")
                 VStack(spacing: 6) {
-                    Text("\(trip.castsLeft) cast\(trip.castsLeft == 1 ? "" : "s") left.")
+                    Text("\(trip.castsLeft) cast\(trip.castsLeft == 1 ? "" : "s") left. Weather: \((trip.weather ?? .clear).displayName).")
                     Text(trip.catches.isEmpty ? "Nothing in the hold yet." : "In the hold: \(trip.catches.map { "\($0.weightDescription) \($0.legendName ?? $0.species.displayName)" }.joined(separator: ", ")).")
                     if let career = viewModel.career, career.liveBait > 0 {
                         Text("\(career.liveBait) live bait on board.")

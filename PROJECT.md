@@ -356,3 +356,11 @@ Orlando asked for the same treatment Dungeon Speaker got: a story, deeper items 
 - Simulated careers finish in 9–18 trips (median 12).
 
 **Not verified:** none of it has been played on the phone. New species reuse the nearest relative's image (mahi and mako show the ocean photo) until real public-domain art is sourced.
+
+## Weather (2026-10-24, build 6)
+
+Career trips now have weather (`Weather.swift`): clear, overcast, rain, squall, storm.
+- A forecast is rolled for every ground at career start and after each trip; the ground-select screen reads it out, the sea screen shows it. Open ocean is rougher (Deep Trench storms ~12% vs Coastal Shelf ~2%).
+- Foul weather makes fights harder (more frequent and stronger runs, more tension per reel, slower gain) but biggest fish bite more and legends rise a little more often. A storm costs one cast (never below 2).
+- Quick Run is unchanged. Weather fields are optional in the save format, so older saves load as clear weather.
+- `WeatherTests` (8): fight bot land rates by weather, size payoff, cast penalty, forecast coverage, ground roughness, old-save decoding, JSON round trip, legends still beatable in every weather. Full suite: 45 tests passing. Whole-career simulations still finish.

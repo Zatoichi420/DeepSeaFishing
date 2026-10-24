@@ -115,6 +115,8 @@ struct Trip: Codable, Equatable {
     var catches: [Fish] = []
     var lost = 0
     var contractsFilled: [Contract] = []
+    /// Optional so saves from before weather existed still load.
+    var weather: Weather?
 }
 
 /// What happened when a fight ended - narrated, and shown on the result screen.
@@ -155,11 +157,14 @@ struct Career: Codable, Equatable {
     var trip: Trip?
     var pendingStory: [StoryBeat] = []
     var contractCounter = 0
+    /// Today's weather at each ground. Optional so older saves still load.
+    var forecast: [String: Weather]?
 
     static func newCareer() -> Career {
         var career = Career()
         career.pendingStory = [StoryBeats.prologue]
         career.refreshContracts()
+        career.rollForecast()
         return career
     }
 
@@ -170,10 +175,12 @@ struct Career: Codable, Equatable {
     func owns(_ kit: EquipmentKit) -> Bool { tier(of: kit) != nil }
     var ownedKits: [EquipmentKit] { EquipmentKit.allCases.filter(owns) }
     var castsPerTrip: Int { 4 + (boatUpgrades.contains(.biggerTank) ? 1 : 0) }
+    func weather(at ground: FishingGround) -> Weather { forecast?[ground.rawValue] ?? .clear }
     func logEntry(_ species: FishSpecies) -> LogEntry { logbook[species.rawValue] ?? LogEntry() }
 
     var sizeSkew: Double {
         2.5 - 0.15 * Double(rank(.fishSense)) - (boatUpgrades.contains(.fishFinder) ? 0.35 : 0)
+            + (trip?.weather?.sizeSkewOffset ?? 0)
     }
 
     /// The legend that could take the bait right now, if any.
@@ -196,6 +203,7 @@ struct Career: Codable, Equatable {
         m.easeRelief *= 1 + 0.05 * Double(rank(.finesse))
         m.runStrength *= 1 - 0.06 * Double(rank(.instinct))
         if boatUpgrades.contains(.fightingChair) { m.tensionPerReel *= 0.93 }
+        trip?.weather?.apply(to: &m)
 
         // Bigger fish take longer to bring in.
         m.gain *= 1.1 - 0.35 * fish.sizeFraction
@@ -235,9 +243,11 @@ struct Career: Codable, Equatable {
         guard unlockedGrounds.contains(ground) else { return .failure(.locked) }
         guard money >= ground.fuelCost else { return .failure(.cantAffordFuel) }
         money -= ground.fuelCost
-        trip = Trip(ground: ground, castsLeft: castsPerTrip)
+        let weather = self.weather(at: ground)
+        let casts = max(2, castsPerTrip - weather.castPenalty)
+        trip = Trip(ground: ground, castsLeft: casts, weather: weather)
         let fuel = ground.fuelCost > 0 ? " Fuel cost \(ground.fuelCost) dollars." : ""
-        return .success("The Marisol heads for \(ground.displayName).\(fuel) You have \(castsPerTrip) casts. \(ground.description)")
+        return .success("The Marisol heads for \(ground.displayName).\(fuel) You have \(casts) casts. \(ground.description) Weather: \(weather.report)")
     }
 
     /// Picks what bites when you cast for `species`. Uses one live bait if
@@ -246,7 +256,7 @@ struct Career: Codable, Equatable {
         let live = useLiveBait && liveBait > 0
         if live { liveBait -= 1 }
         if let trip, let legend = legendInPlay(ground: trip.ground, species: species) {
-            let chance = 0.05 + (live ? 0.10 : 0) + (boatUpgrades.contains(.outriggers) ? 0.05 : 0)
+            let chance = 0.05 + (live ? 0.10 : 0) + (boatUpgrades.contains(.outriggers) ? 0.05 : 0) + (trip.weather?.legendBonus ?? 0)
             if GameRandom.unit() < chance { return legend.fish }
         }
         return Fish.random(species: species, sizeSkew: sizeSkew - (live ? 0.5 : 0))
@@ -330,6 +340,7 @@ struct Career: Codable, Equatable {
         }
         self.trip = nil
         refreshContracts()
+        rollForecast()
         return report
     }
 
@@ -403,6 +414,15 @@ struct Career: Codable, Equatable {
         money -= upgrade.price
         boatUpgrades.insert(upgrade)
         return .success("The \(upgrade.displayName) is installed. \(upgrade.summary) You have \(money) dollars.")
+    }
+
+    // MARK: Weather
+
+    /// A fresh forecast for every ground, drawn after each trip.
+    mutating func rollForecast() {
+        var next: [String: Weather] = [:]
+        for ground in FishingGround.allCases { next[ground.rawValue] = Weather.roll(at: ground) }
+        forecast = next
     }
 
     // MARK: Contracts
